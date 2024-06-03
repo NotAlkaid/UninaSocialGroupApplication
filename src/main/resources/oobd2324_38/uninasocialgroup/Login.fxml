@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oobd2324_38.uninasocialgroup.LoginController">
+   <children>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="350.0" styleClass="PageColor" stylesheets="@Style.css">
+         <children>
+            <Label fx:id="AleMailLabel" layoutX="28.0" layoutY="296.0" text="e: ale.dellavecchia@unina.studenti.it" />
+            <Label fx:id="LeoMailLabel" layoutX="28.0" layoutY="314.0" text="e: mail leo" />
+            <Label fx:id="MarcoMailLabel" layoutX="28.0" layoutY="332.0" text="e: mail marco" />
+            <FontAwesomeIcon fill="WHITE" glyphName="GROUP" layoutX="99.0" layoutY="157.0" size="12em" wrappingWidth="150.39999999999986" />
+            <Label layoutX="68.0" layoutY="196.0" text="UninaSoci@lGroup" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="setUsernameField" layoutX="484.0" layoutY="157.0" prefHeight="26.0" prefWidth="150.0" promptText="Inserisci un username" styleClass="LoginTextFields" stylesheets="@Style.css" />
+      <Label fx:id="UsernameLabel" layoutX="415.0" layoutY="157.0" prefHeight="26.0" prefWidth="63.0" styleClass="LoginLabels" stylesheets="@Style.css" text="Username" />
+      <Label fx:id="PasswordLabel" layoutX="415.0" layoutY="207.0" styleClass="LoginLabels" stylesheets="@Style.css" text="Password" />
+      <Button id="LogInButton" fx:id="LogInButton" layoutX="484.0" layoutY="282.0" mnemonicParsing="false" onAction="#LogInOnAction" prefHeight="30.0" prefWidth="150.0" styleClass="LogInButton" stylesheets="@Style.css" text="Log In" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="setPasswordField" layoutX="484.0" layoutY="201.0" prefHeight="26.0" prefWidth="150.0" promptText="Inserisci una password" styleClass="LoginTextFields" stylesheets="@Style.css" />
+      <ToggleButton id="RegisterText" layoutX="538.0" layoutY="345.0" mnemonicParsing="false" onAction="#SwitchToSignInScene" style="-fx-background-color: #ffffff; -fx-text-fill: #58afff;" styleClass="RegisterText" stylesheets="@Style.css" text="Clicca qui per registrarti" />
+      <CheckBox fx:id="MostraPwdCheck" layoutX="495.0" layoutY="241.0" mnemonicParsing="false" onAction="#MostraPasswordOnAction" styleClass="MostraPwdCheckBox" stylesheets="@Style.css" text="Mostra Password" />
+      <TextField fx:id="setPasswordClearField" layoutX="484.0" layoutY="201.0" prefHeight="26.0" prefWidth="150.0" promptText="Inserisci una password" styleClass="LoginTextFields" stylesheets="@Style.css" visible="false" />
+      <Label fx:id="InvalidCredentialsLabel" layoutX="459.0" layoutY="131.0" text="Username o Password non corretti!" textFill="#fa5050" visible="false" />
+      <Label fx:id="EmptyFieldsLabel" layoutX="479.0" layoutY="131.0" text="Non puoi lasciare campi vuoti!" textFill="#fa5050" visible="false" />
+      <Label fx:id="LogInSuccessLabel" layoutX="508.0" layoutY="131.0" text="Utente autenticato!" textFill="#31d125" visible="false" />
+      <Label layoutX="429.0" layoutY="349.0" text="Non hai un account?" />
+      <FontAwesomeIcon glyphName="LOCK" layoutX="520.0" layoutY="122.0" size="10em" stroke="WHITE" styleClass="PageColor">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.3764705955982208" green="0.9372549057006836" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color green="0.3803921639919281" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </FontAwesomeIcon>
+   </children>
+</AnchorPane>
