@@ -4,6 +4,7 @@ import org.postgresql.util.PSQLException;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Utente {
@@ -138,5 +139,18 @@ public class Utente {
 
         if(utenteDao.InsertNewUtente(this)) return true;
         return false;
+    }
+
+    public int getNotificationsNumber() {
+        UtenteDao utenteDao = new UtenteDao();
+        ArrayList<String> ausiliar = utenteDao.getAllNotifications(this);
+        return ausiliar.size();
+    }
+
+    public int getIdByUsername() {
+        UtenteDao utenteDao = new UtenteDao();
+
+        if(utenteDao.getIdByUsername(this) != -1) return utenteDao.getIdByUsername(this);
+        return -1;
     }
 }

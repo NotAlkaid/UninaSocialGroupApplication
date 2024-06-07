@@ -102,6 +102,7 @@ public class LoginController {
 
     public void SwitchToHomeScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
+
         loader.setLocation(getClass().getResource("Home.fxml"));
         root = loader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();

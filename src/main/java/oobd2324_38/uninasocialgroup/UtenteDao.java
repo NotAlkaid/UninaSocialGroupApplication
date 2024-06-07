@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class UtenteDao {
     public Utente LogInVerification(String username, String password) {
@@ -55,5 +56,36 @@ public class UtenteDao {
         }catch(SQLException e){
             throw new SQLException();
         }
+    }
+
+    public ArrayList<String> getAllNotifications(Utente utente) {
+        ArrayList<String> notifications = new ArrayList<>();
+        String sql = "select * from \"SOCIALGROUP_SCHEMA\".get_all_notifications(?)";
+
+        try {
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, utente.getIdUtente());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                notifications.add(rs.getString("messaggio"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return notifications;
+    }
+
+    public int getIdByUsername(Utente utente) {
+        String sql = "select \"ID_UTENTE\" from \"SOCIALGROUP_SCHEMA\".\"UTENTE\" where \"Username\" = ?";
+
+        try {
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setString(1, utente.getUsername());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {return rs.getInt("ID_UTENTE");}
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return -1;
     }
 }
