@@ -2,10 +2,10 @@ package oobd2324_38.uninasocialgroup;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -57,7 +57,34 @@ public class LoginController {
         }
     }
 
-    public void LogInOnAction(ActionEvent event) throws IOException {
+    public void SwitchToSignInScene() throws IOException {
+        root = FXMLLoader.load(getClass().getResource("Register.fxml"));
+        stage = Main.stage;
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+    }
+
+    public void SwitchToHomeScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Home.fxml"));
+        stage = Main.stage;
+        root = loader.load();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        HomeController controller = loader.getController();
+        controller.InitPage(setUsernameField.getText());
+    }
+
+    public void setLoginCredentialsAfterSignIn(String username, String password) {
+        setUsernameField.setText(username);
+        setPasswordField.setText(password);
+    }
+
+    public void LoginChecks() throws IOException {
         if(MostraPwdCheck.isSelected()) {
             if(setUsernameField.getText().isEmpty() || setPasswordClearField.getText().isEmpty()){
                 EmptyFieldsLabel.setVisible(true);
@@ -66,7 +93,7 @@ public class LoginController {
             } else {
                 Utente utente = new Utente();
                 if(utente.LoginVerification(setUsernameField.getText(), setPasswordClearField.getText()) != null) { //Qui dovro' gestire lo switch page passando l'utente per parametro
-                    SwitchToHomeScene(event);
+                    SwitchToHomeScene();
                 } else {
                     EmptyFieldsLabel.setVisible(false);
                     InvalidCredentialsLabel.setVisible(true);
@@ -81,7 +108,7 @@ public class LoginController {
             } else {
                 Utente utente = new Utente();
                 if(utente.LoginVerification(setUsernameField.getText(), setPasswordField.getText()) != null) {
-                    SwitchToHomeScene(event);
+                    SwitchToHomeScene();
                 } else {
                     EmptyFieldsLabel.setVisible(false);
                     InvalidCredentialsLabel.setVisible(true);
@@ -91,31 +118,13 @@ public class LoginController {
         }
     }
 
-    public void SwitchToSignInScene(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Register.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
+    public void LogInOnClick(ActionEvent event) throws IOException {
+        LoginChecks();
     }
 
-    public void SwitchToHomeScene(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-
-        loader.setLocation(getClass().getResource("Home.fxml"));
-        root = loader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        HomeController controller = loader.getController();
-        controller.InitPage(setUsernameField.getText());
-    }
-
-    public void setLoginCredentialsAfterSignIn(String username, String password) {
-        setUsernameField.setText(username);
-        setPasswordField.setText(password);
+    public void LogInOnEnter(KeyEvent event) throws IOException {
+        if((event).getCode() == KeyCode.ENTER) {
+            LoginChecks();
+        }
     }
 }

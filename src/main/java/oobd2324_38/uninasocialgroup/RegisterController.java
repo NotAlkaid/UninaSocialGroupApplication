@@ -60,20 +60,20 @@ public class RegisterController implements Initializable {
         SignInChoiceBox.getItems().addAll(Sesso.Maschio, Sesso.Femmina, Sesso.Altro);
     }
 
-    public void SwitchToLoginScene(ActionEvent event) throws IOException {
+    public void SwitchToLoginScene() throws IOException {
         root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage = Main.stage;
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
     }
 
-    public void SwitchToLoginSceneWithCreds(ActionEvent event) throws IOException {
+    public void SwitchToLoginSceneWithCreds() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Login.fxml"));
         root = loader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage = Main.stage;
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -145,7 +145,7 @@ public class RegisterController implements Initializable {
                     Utente newUtente = new Utente(SignInUsernameField.getText(), SignInPwdField.getText(), SignInNameField.getText(), SignInSurnameField.getText(),
                             SignInPhoneField.getText(), SignInBiografia.getText(), SignInDatePicker.getValue(), Sesso.valueOf(String.valueOf(SignInChoiceBox.getValue())));
                     try{
-                        if(newUtente.InsertnewUser()) this.SwitchToLoginSceneWithCreds(event);
+                        if(newUtente.InsertnewUser()) this.SwitchToLoginSceneWithCreds();
                     }catch(SQLException e){
                         if(e.getErrorCode() == 0) {
                             NomeVuotoLabel.setVisible(false);

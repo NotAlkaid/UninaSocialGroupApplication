@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    public static Stage stage;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -20,6 +21,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
+        Main.stage = stage;
 
     }
 
