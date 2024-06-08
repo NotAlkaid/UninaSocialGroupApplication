@@ -108,4 +108,22 @@
 .Logo:hover {
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+}
+
+.HomeButtons:hover {
+    -fx-cursor: hand;
+}
+
+.GroupTag {
+    -fx-background-color: #fffff6;
+    -fx-border-color: #000000;
+    -fx-border-width: 1.5;
+}
+
+.GroupTag:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-cursor: hand;
+    -fx-background-color: #60efff;
 }

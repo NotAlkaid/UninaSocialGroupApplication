@@ -1,7 +1,5 @@
 package oobd2324_38.uninasocialgroup;
 
-import org.postgresql.util.PSQLException;
-
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -152,5 +150,14 @@ public class Utente {
 
         if(utenteDao.getIdByUsername(this) != -1) return utenteDao.getIdByUsername(this);
         return -1;
+    }
+
+    public ArrayList<Gruppo> getGruppi() {
+        UtenteDao utenteDao = new UtenteDao();
+        ArrayList<Gruppo> group;
+        group = utenteDao.GetAllGroupsName(this);
+
+        if(group.isEmpty()) return null;
+        return group;
     }
 }

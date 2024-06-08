@@ -1,13 +1,9 @@
 package oobd2324_38.uninasocialgroup;
 
-import javafx.util.StringConverter;
-import org.postgresql.util.PSQLException;
-
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class UtenteDao {
@@ -72,6 +68,7 @@ public class UtenteDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        DatabaseConnection.closeConnection();
         return notifications;
     }
 
@@ -82,10 +79,33 @@ public class UtenteDao {
             PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
             ps.setString(1, utente.getUsername());
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {return rs.getInt("ID_UTENTE");}
+            if (rs.next()) {
+                DatabaseConnection.closeConnection();
+                return rs.getInt("ID_UTENTE");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return -1;
+    }
+
+    public ArrayList<Gruppo> GetAllGroupsName(Utente utente) {
+        String sql = "select * from \"SOCIALGROUP_SCHEMA\".\"PARTECIPA\" where \"ID_UTENTE\" = ?";
+        ArrayList<Gruppo> groups = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, utente.getIdUtente());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                Gruppo gruppo = new Gruppo();
+                gruppo.setNome(gruppo.getNomeById(rs.getInt("ID_GRUPPO")));
+                groups.add(gruppo);
+            }
+            DatabaseConnection.closeConnection();
+            return groups;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -13,6 +13,7 @@ module oobd2324_38.uninasocialgroup {
     requires java.desktop;
     requires java.sql;
     requires org.postgresql.jdbc;
+    requires fontawesomefx;
 
     opens oobd2324_38.uninasocialgroup to javafx.fxml;
     exports oobd2324_38.uninasocialgroup;
