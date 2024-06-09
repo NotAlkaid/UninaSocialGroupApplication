@@ -22,4 +22,22 @@ public class GruppoDao {
         }
         return null;
     }
+
+    public String getTemi(Gruppo gruppo) {
+        String sql = "select * from \"SOCIALGROUP_SCHEMA\".get_group_categories(?)";
+        StringBuilder result = new StringBuilder();
+
+        try{
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, gruppo.getIdGruppo());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                result.append(rs.getString(2)).append(", ");
+            }
+            result.delete(result.length() - 2, result.length());
+            return result.toString();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

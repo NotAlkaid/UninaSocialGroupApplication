@@ -89,8 +89,8 @@ public class UtenteDao {
         return -1;
     }
 
-    public ArrayList<Gruppo> GetAllGroupsName(Utente utente) {
-        String sql = "select * from \"SOCIALGROUP_SCHEMA\".\"PARTECIPA\" where \"ID_UTENTE\" = ?";
+    public ArrayList<Gruppo> GetAllGroups(Utente utente) {
+        String sql = "select \"ID_GRUPPO\" from \"SOCIALGROUP_SCHEMA\".\"PARTECIPA\" where \"ID_UTENTE\" = ?";
         ArrayList<Gruppo> groups = new ArrayList<>();
 
         try {
@@ -99,7 +99,7 @@ public class UtenteDao {
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 Gruppo gruppo = new Gruppo();
-                gruppo.setNome(gruppo.getNomeById(rs.getInt("ID_GRUPPO")));
+                gruppo.setIdGruppo(rs.getInt(1));
                 groups.add(gruppo);
             }
             DatabaseConnection.closeConnection();

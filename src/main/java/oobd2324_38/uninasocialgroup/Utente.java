@@ -155,7 +155,7 @@ public class Utente {
     public ArrayList<Gruppo> getGruppi() {
         UtenteDao utenteDao = new UtenteDao();
         ArrayList<Gruppo> group;
-        group = utenteDao.GetAllGroupsName(this);
+        group = utenteDao.GetAllGroups(this);
 
         if(group.isEmpty()) return null;
         return group;
