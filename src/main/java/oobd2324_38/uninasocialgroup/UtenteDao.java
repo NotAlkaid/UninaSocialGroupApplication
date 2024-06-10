@@ -108,4 +108,18 @@ public class UtenteDao {
             throw new RuntimeException(e);
         }
     }
+
+    public String GetUsernameById(Utente utente) {
+        String sql = "select \"Username\" from \"SOCIALGROUP_SCHEMA\".\"UTENTE\" where \"ID_UTENTE\" = ?";
+
+        try{
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, utente.getIdUtente());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {return rs.getString("Username");}
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 }

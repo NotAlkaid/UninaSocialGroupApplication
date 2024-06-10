@@ -3,11 +3,10 @@ package oobd2324_38.uninasocialgroup;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -20,6 +19,9 @@ public class HomeController {
     @FXML private TextField HomeSearchBar;
     @FXML private GridPane GridGroups;
     @FXML private Button NomeGruppoButton;
+    @FXML private Button NotificationButton;
+    @FXML private ScrollPane NotificationsPane;
+    @FXML private GridPane NotificationsGrid;
     private Stage stage;
     private Parent root;
     private Scene scene;
@@ -76,5 +78,29 @@ public class HomeController {
 
     public void LogOutOnClick() throws IOException {
         SwitchToLoginScene();
+    }
+
+    public void OnNotificationButtonClick() {
+        if(!NotificationsPane.isVisible()) {
+            Utente utente = new Utente();
+            utente.setUsername(UtenteLoggato.getText());
+            utente.setIdUtente(utente.getIdByUsername());
+            ArrayList<String> NotificationsList = utente.getAllNotifications();
+            if(NotificationsList != null) {
+                NotificationsPane.setVisible(true);
+                int rows = 1;
+                for(int i = 0; i < NotificationsList.size(); i++) {
+                    Label Notification = new Label();
+                    Notification.setText(NotificationsList.get(i));
+                    Separator separator = new Separator();
+                    separator.setOrientation(Orientation.HORIZONTAL);
+                    NotificationsGrid.add(Notification, 0, rows);
+                    GridPane.setMargin(Notification, new Insets(10, 10, 10, 10));
+                    rows++;
+                    NotificationsGrid.add(separator, 0, rows);
+                    rows++;
+                }
+            }
+        } else {NotificationsPane.setVisible(false);}
     }
 }

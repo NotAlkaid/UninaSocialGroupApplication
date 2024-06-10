@@ -1,6 +1,7 @@
 package oobd2324_38.uninasocialgroup;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Gruppo {
     private int IdGruppo;
@@ -69,5 +70,10 @@ public class Gruppo {
     public String GetTemi() {
         GruppoDao gruppoDao = new GruppoDao();
         return gruppoDao.getTemi(this);
+    }
+
+    public ArrayList<Post> getAllPosts() {
+        GruppoDao gruppoDao = new GruppoDao();
+        return gruppoDao.getPosts(this);
     }
 }

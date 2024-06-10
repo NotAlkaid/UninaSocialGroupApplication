@@ -43,7 +43,7 @@
                             <graphic>
                                 <FontAwesomeIcon fill="WHITE" glyphName="BARS" size="3em" styleClass="Logo" wrappingWidth="37.25717234611511" />
                             </graphic></Button>
-                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="37.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" onAction="#OnNotificationButtonClick" prefHeight="38.0" prefWidth="37.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="1">
                             <graphic>
                                 <FontAwesomeIcon fill="WHITE" glyphName="BELL" size="2.5em" styleClass="Logo" wrappingWidth="31.199890315532684" />
                             </graphic>
@@ -65,7 +65,8 @@
               <rowConstraints>
                 <RowConstraints maxHeight="215.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="440.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="474.0" minHeight="10.0" prefHeight="458.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="474.0" minHeight="10.0" prefHeight="423.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="474.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label fx:id="NomeGruppoLabel" alignment="CENTER" prefHeight="53.0" prefWidth="933.0" text="NOME GRUPPO" textAlignment="RIGHT">
@@ -80,7 +81,7 @@
                   </Label>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
                      <content>
-                        <GridPane fx:id="GridGroups" prefHeight="41.0" prefWidth="66.0">
+                        <GridPane fx:id="GridPosts" prefHeight="100.0" prefWidth="913.0">
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
@@ -94,8 +95,23 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
+                  <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="934.0" styleClass="CreatePostButton" stylesheets="@Style.css" text="CREA UN POST" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <FontAwesomeIcon glyphName="PLUS" size="3em" styleClass="CreatePostButton" textAlignment="RIGHT" wrappingWidth="33.285715103149414" GridPane.rowIndex="3" />
                </children>
             </GridPane>
+            <ScrollPane fx:id="NotificationsPane" hbarPolicy="NEVER" layoutX="625.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
+               <content>
+                  <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="271.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
          </children></AnchorPane>
     </center>
     <left>
@@ -124,7 +140,7 @@
                     </font>
                 </Label>
                 <Button mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="75.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" />
-                <Button mnemonicParsing="false" opacity="0.0" prefHeight="32.0" prefWidth="54.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Button mnemonicParsing="false" onAction="#LogOutOnClick" opacity="0.0" prefHeight="32.0" prefWidth="54.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Label text="CREA" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <font>
                         <Font name="System Bold" size="24.0" />

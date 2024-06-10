@@ -160,4 +160,15 @@ public class Utente {
         if(group.isEmpty()) return null;
         return group;
     }
+
+    public ArrayList<String> getAllNotifications() {
+        UtenteDao utenteDao = new UtenteDao();
+        ArrayList<String> ausiliar = utenteDao.getAllNotifications(this);
+        return ausiliar;
+    }
+
+    public String GetUsernameByid() {
+        UtenteDao utenteDao = new UtenteDao();
+        return utenteDao.GetUsernameById(this);
+    }
 }

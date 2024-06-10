@@ -142,3 +142,12 @@
     -fx-cursor: hand;
     -fx-text-fill: grey;
 }
+
+.CreatePostButton {
+    -fx-background-color: #ffffff;
+}
+
+.CreatePostButton:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #fff5f5;
+}

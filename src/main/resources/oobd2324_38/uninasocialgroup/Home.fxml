@@ -43,7 +43,7 @@
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="BARS" size="3em" styleClass="Logo" wrappingWidth="37.25717234611511" />
                      </graphic></Button>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="37.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="1">
+                  <Button fx:id="NotificationButton" mnemonicParsing="false" onAction="#OnNotificationButtonClick" prefHeight="38.0" prefWidth="37.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="1">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="BELL" size="2.5em" styleClass="Logo" wrappingWidth="31.199890315532684" />
                      </graphic>
@@ -66,6 +66,15 @@
             <ScrollPane layoutX="9.0" layoutY="122.0" prefHeight="395.0" prefWidth="914.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
                <content>
                   <GridPane fx:id="GridGroups" prefHeight="41.0" prefWidth="66.0">
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="NotificationsPane" hbarPolicy="NEVER" layoutX="643.0" layoutY="-1.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
+               <content>
+                  <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="271.0">
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
