@@ -18,8 +18,6 @@ public class HomeController {
     @FXML private Label NotificationsNumber;
     @FXML private TextField HomeSearchBar;
     @FXML private GridPane GridGroups;
-    @FXML private Button NomeGruppoButton;
-    @FXML private Button NotificationButton;
     @FXML private ScrollPane NotificationsPane;
     @FXML private GridPane NotificationsGrid;
     private Stage stage;
@@ -50,7 +48,8 @@ public class HomeController {
                     controller.setUtenteLoggato(UtenteLoggato.getText());
                     controller.setIdGruppo(GruppiUtente.get(i).getIdGruppo());
                     controller.setNotificationsNumber(Integer.parseInt(NotificationsNumber.getText()));
-                    controller.InitializeTag(GruppiUtente.get(i), UtenteLoggato.getText());
+                    controller.InitializeTag(GruppiUtente.get(i));
+                    System.out.println(i);
                     if (cols == 3) {
                         cols = 0;
                         rows++;
@@ -102,5 +101,24 @@ public class HomeController {
                 }
             }
         } else {NotificationsPane.setVisible(false);}
+    }
+
+    public void SwitchToCreaScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Crea.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        CreaController controller = loader.getController();
+        controller.setUtenteLoggato(UtenteLoggato.getText());
+        controller.setNotificationsNumber(Integer.parseInt(NotificationsNumber.getText()));
+        controller.InitPage();
+    }
+
+    public void OnCreaButtonClick() throws IOException {
+        SwitchToCreaScene();
     }
 }

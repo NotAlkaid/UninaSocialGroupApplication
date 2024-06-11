@@ -34,8 +34,11 @@ public class GruppoDao {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 result.append(rs.getString(2)).append(", ");
+                System.out.println("loop");
             }
+            System.out.println(result.length());
             result.delete(result.length() - 2, result.length());
+            DatabaseConnection.closeConnection();
             return result.toString();
         } catch (SQLException e) {
             throw new RuntimeException(e);

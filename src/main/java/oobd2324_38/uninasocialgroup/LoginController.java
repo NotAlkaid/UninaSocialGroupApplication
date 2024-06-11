@@ -118,7 +118,7 @@ public class LoginController {
         }
     }
 
-    public void LogInOnClick(ActionEvent event) throws IOException {
+    public void LogInOnClick() throws IOException {
         LoginChecks();
     }
 

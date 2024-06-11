@@ -27,7 +27,7 @@ public class GruppoController {
     private Parent root;
     private Scene scene;
 
-    public void InitializeTag(Gruppo gruppo, String username) {
+    public void InitializeTag(Gruppo gruppo) {
         NomeGruppo.setText(gruppo.getNomeById(gruppo.getIdGruppo()));
         TagIcon.fillProperty().setValue(Paint.valueOf(GetRandomColor()));
         TemiLabel.setText(getTemi(gruppo));

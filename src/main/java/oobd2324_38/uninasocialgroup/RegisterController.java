@@ -82,7 +82,7 @@ public class RegisterController implements Initializable {
         controller.setLoginCredentialsAfterSignIn(SignInUsernameField.getText(), SignInPwdField.getText());
     }
 
-    public void SignInButtonClicked(ActionEvent event) throws IOException {
+    public void SignInButtonClicked() throws IOException {
         if(SignInUsernameField.getText().isEmpty()) {
             NomeVuotoLabel.setVisible(false);
             UsernameVuotoLabel.setVisible(true);
@@ -174,7 +174,7 @@ public class RegisterController implements Initializable {
     }
 
     private boolean CheckPhoneNumber(String number) {
-        Pattern pattern = Pattern.compile("(\\d{11})");
+        Pattern pattern = Pattern.compile("(\\d{10})");
         Matcher matcher = pattern.matcher(number);
         if((number.startsWith("3") & matcher.matches()) || number.isEmpty()) return true;
         return false;
