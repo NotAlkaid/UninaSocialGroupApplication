@@ -1,5 +1,6 @@
 package oobd2324_38.uninasocialgroup;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -17,6 +18,12 @@ public class Post {
         this.DataPubblicazione = DataPubblicazione;
         this.OraPubblicazione = OraPubblicazione;
         this.Testo = Testo;
+    }
+
+    public Post(String Testo, Gruppo inGruppo, Utente Autore) {
+        this.Testo = Testo;
+        this.inGruppo = inGruppo;
+        this.Autore = Autore;
     }
 
     public int getIdPost() {
@@ -65,5 +72,10 @@ public class Post {
 
     public void setInGruppo(Gruppo inGruppo) {
         this.inGruppo = inGruppo;
+    }
+
+    public void insertPost() throws SQLException {
+        PostDao postDao = new PostDao();
+        postDao.insertPost(this);
     }
 }

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oobd2324_38.uninasocialgroup.CreaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oobd2324_38.uninasocialgroup.CreaPostController">
     <top>
         <AnchorPane prefHeight="55.0" prefWidth="900.0" styleClass="PageColor" stylesheets="@Style.css" BorderPane.alignment="CENTER">
             <children>
@@ -58,7 +59,7 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@Style.css" BorderPane.alignment="CENTER_LEFT">
             <children>
-                <ScrollPane fx:id="NotificationsPane" hbarPolicy="NEVER" layoutX="643.0" layoutY="-1.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
+                <ScrollPane fx:id="NotificationsPane" hbarPolicy="NEVER" layoutX="625.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
                     <content>
                         <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="271.0">
                             <rowConstraints>
@@ -67,25 +68,19 @@
                         </GridPane>
                     </content>
                 </ScrollPane>
-            <TextField fx:id="NomeGruppoField" layoutX="339.0" layoutY="100.0" prefHeight="26.0" prefWidth="254.0" promptText="Inserisci un nome" styleClass="LoginTextFields" stylesheets="@Style.css" />
-            <TextField fx:id="TemaGruppoField" layoutX="339.0" layoutY="147.0" prefHeight="26.0" prefWidth="254.0" promptText="Inserisci un tema" styleClass="LoginTextFields" stylesheets="@Style.css" />
-            <Label layoutX="310.0" layoutY="14.0" text="CREA UN GRUPPO">
+            <Label layoutX="334.0" layoutY="43.0" text="Dicci cosa pensi">
                <font>
-                  <Font name="System Bold" size="36.0" />
+                  <Font name="System Bold Italic" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="254.0" layoutY="105.0" text="Nome gruppo" />
-            <Label layoutX="237.0" layoutY="152.0" text="Tema del gruppo" />
-            <Button fx:id="CreaGruppoButton" layoutX="356.0" layoutY="229.0" mnemonicParsing="false" onAction="#OnCreaButtonClick" prefHeight="73.0" prefWidth="219.0" styleClass="LogInButton" stylesheets="@Style.css" text="CREA">
-               <font>
-                  <Font size="24.0" />
-               </font>
+            <TextArea fx:id="PostField" layoutX="342.0" layoutY="143.0" prefHeight="111.0" prefWidth="250.0" promptText="Scrivi quello che pensi" wrapText="true" />
+            <Button fx:id="CondividiButton" layoutX="408.0" layoutY="301.0" mnemonicParsing="false" onAction="#OnCondividiButtonClick" prefHeight="29.0" prefWidth="119.0" styleClass="LogInButton" stylesheets="@Style.css" text="Condividi" />
+            <Button fx:id="GoBackButton" layoutX="24.0" layoutY="26.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="GoBackButton" stylesheets="@Style.css" text="Torna indietro">
                <graphic>
-                  <FontAwesomeIcon glyphName="PLUS" size="2em" />
+                  <FontAwesomeIcon glyphName="ARROW_LEFT" size="2em" text="" />
                </graphic>
             </Button>
-            <Label fx:id="NomeGruppoVuotoLabel" layoutX="409.0" layoutY="68.0" text="Nome gruppo vuoto!" textFill="RED" visible="false" />
-            <Label fx:id="TemaVuotoLabel" layoutX="402.0" layoutY="68.0" text="Tema del gruppo vuoto!" textFill="RED" visible="false" />
+            <Label fx:id="CampoVuotoLabel" layoutX="429.0" layoutY="106.0" text="Campo vuoto!" textFill="RED" visible="false" />
             </children></AnchorPane>
     </center>
     <left>
@@ -113,14 +108,14 @@
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Button fx:id="HomeButton" mnemonicParsing="false" onAction="#OnHomeButtonClick" opacity="0.0" prefHeight="26.0" prefWidth="75.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" />
-                <Button mnemonicParsing="false" onAction="#LogOutOnClick" opacity="0.0" prefHeight="32.0" prefWidth="54.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Button fx:id="HomeButton" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="75.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" />
+                <Button fx:id="LogOutButton" mnemonicParsing="false" onAction="#LogOutOnClick" opacity="0.0" prefHeight="32.0" prefWidth="54.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Label text="CREA" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Button mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="64.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button fx:id="CreaButton" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="64.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </left>

@@ -163,8 +163,7 @@ public class Utente {
 
     public ArrayList<String> getAllNotifications() {
         UtenteDao utenteDao = new UtenteDao();
-        ArrayList<String> ausiliar = utenteDao.getAllNotifications(this);
-        return ausiliar;
+        return utenteDao.getAllNotifications(this);
     }
 
     public String GetUsernameByid() {

@@ -1,5 +1,6 @@
 package oobd2324_38.uninasocialgroup;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -8,14 +9,14 @@ public class Gruppo {
     private String Nome;
     private LocalDate DataCreazione;
     private Utente CreatoreGruppo;
-    private String[] Temi;
+    private String Tema;
 
-    public Gruppo(int IdGruppo, String Nome, LocalDate DataCreazione, Utente CreatoreGruppo, String[] Temi) {
+    public Gruppo(int IdGruppo, String Nome, LocalDate DataCreazione, Utente CreatoreGruppo, String Tema) {
         this.IdGruppo = IdGruppo;
         this.Nome = Nome;
         this.DataCreazione = DataCreazione;
         this.CreatoreGruppo = CreatoreGruppo;
-        this.Temi = Temi;
+        this.Tema = Tema;
     }
 
     public Gruppo(){}
@@ -52,12 +53,12 @@ public class Gruppo {
         CreatoreGruppo = creatoreGruppo;
     }
 
-    public String[] getTemi() {
-        return Temi;
+    public String getTema() {
+        return Tema;
     }
 
-    public void setTemi(String[] temi) {
-        Temi = temi;
+    public void setTema(String tema) {
+        Tema = tema;
     }
 
     public String getNomeById(int idGruppo) {
@@ -75,5 +76,10 @@ public class Gruppo {
     public ArrayList<Post> getAllPosts() {
         GruppoDao gruppoDao = new GruppoDao();
         return gruppoDao.getPosts(this);
+    }
+
+    public void insertGroup() throws SQLException {
+        GruppoDao gruppoDao = new GruppoDao();
+        gruppoDao.insertGruppo(this);
     }
 }

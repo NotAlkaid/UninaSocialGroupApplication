@@ -62,7 +62,8 @@ public class GruppoController {
         GroupPageController controller = loader.getController();
         controller.setUtenteLoggato1(UtenteLoggato);
         controller.setNotificationsNumber1(NotificationsNumber);
-        controller.initPage(IdGruppo);
+        controller.setIdGruppo(IdGruppo);
+        controller.initPage();
     }
 
     public void OnGroupTagClicked() throws IOException {

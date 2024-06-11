@@ -95,7 +95,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="934.0" styleClass="CreatePostButton" stylesheets="@Style.css" text="CREA UN POST" GridPane.rowIndex="3">
+                  <Button fx:id="CreaPostButton" mnemonicParsing="false" onAction="#OnCreaPostButtonClick" prefHeight="64.0" prefWidth="934.0" styleClass="CreatePostButton" stylesheets="@Style.css" text="CREA UN POST" GridPane.rowIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font>

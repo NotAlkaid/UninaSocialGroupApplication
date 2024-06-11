@@ -23,21 +23,21 @@ import java.util.ResourceBundle;
 public class GroupPageController {
     @FXML private Label NomeGruppoLabel;
     @FXML private Label TemiLabel;
-    @FXML private Button GoBackButton;
     @FXML private Label UtenteLoggato;
     @FXML private Label NotificationsNumber;
     @FXML private ScrollPane NotificationsPane;
     @FXML private GridPane NotificationsGrid;
     @FXML private GridPane GridPosts;
+    private int idGruppo;
     private String UtenteLoggato1;
     private int NotificationsNumber1;
     private Stage stage;
     private Parent root;
     private Scene scene;
 
-    public void initPage(int IdGruppo) throws IOException {
+    public void initPage() throws IOException {
         Gruppo gruppo = new Gruppo();
-        gruppo.setIdGruppo(IdGruppo);
+        gruppo.setIdGruppo(idGruppo);
         Utente utente = new Utente();
         utente.setUsername(UtenteLoggato1);
         utente.setIdUtente(utente.getIdByUsername());
@@ -104,6 +104,14 @@ public class GroupPageController {
         NotificationsNumber1 = notificationsNumber1;
     }
 
+    public int getIdGruppo() {
+        return idGruppo;
+    }
+
+    public void setIdGruppo(int idGruppo) {
+        this.idGruppo = idGruppo;
+    }
+
     public void SwitchToLoginScene() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Login.fxml"));
@@ -141,5 +149,24 @@ public class GroupPageController {
                 }
             }
         } else {NotificationsPane.setVisible(false);}
+    }
+
+    public void SwitchToCreaPost() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("CreaPost.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        CreaPostController controller = loader.getController();
+        controller.setUtenteLoggato(UtenteLoggato1);
+        controller.setNotificationsNumber(NotificationsNumber1);
+        controller.setIdGruppo(idGruppo);
+    }
+
+    public void OnCreaPostButtonClick() throws IOException {
+        SwitchToCreaPost();
     }
 }

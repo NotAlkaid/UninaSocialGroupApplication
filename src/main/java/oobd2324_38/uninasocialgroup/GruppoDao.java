@@ -68,4 +68,18 @@ public class GruppoDao {
             throw new RuntimeException(e);
         }
     }
+
+    public void insertGruppo(Gruppo gruppo) throws SQLException {
+        String sql = "select * from \"SOCIALGROUP_SCHEMA\".insert_group(?, ?, ?)";
+
+        try {
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setString(1, gruppo.getNome());
+            ps.setString(2, gruppo.getTema());
+            ps.setInt(3, gruppo.getCreatoreGruppo().getIdUtente());
+            ResultSet rs = ps.executeQuery();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+    }
 }
