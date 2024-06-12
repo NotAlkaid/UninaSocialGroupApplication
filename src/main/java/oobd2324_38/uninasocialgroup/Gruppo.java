@@ -82,4 +82,19 @@ public class Gruppo {
         GruppoDao gruppoDao = new GruppoDao();
         gruppoDao.insertGruppo(this);
     }
+
+    public static ArrayList<Gruppo> getNamedGroups(String titolo, int idUtente) {
+        GruppoDao gruppoDao = new GruppoDao();
+        return gruppoDao.getNamedGroups(titolo, idUtente);
+    }
+
+    public static ArrayList<Gruppo> getThemeGroups(String tema, int idUtente) {
+        GruppoDao gruppoDao = new GruppoDao();
+        return gruppoDao.getThemeGroups(tema, idUtente);
+    }
+
+    public boolean isGroupAlreadyRequested(Utente utente) {
+        GruppoDao gruppoDao = new GruppoDao();
+        return gruppoDao.isGroupAlreadyRequested(utente, this);
+    }
 }

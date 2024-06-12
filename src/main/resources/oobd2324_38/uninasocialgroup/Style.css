@@ -152,3 +152,9 @@
     -fx-cursor: hand;
     -fx-background-color: #fff5f5;
 }
+
+.GroupTagSearch:hover {
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}

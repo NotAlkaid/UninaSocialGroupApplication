@@ -34,9 +34,7 @@ public class GruppoDao {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 result.append(rs.getString(2)).append(", ");
-                System.out.println("loop");
             }
-            System.out.println(result.length());
             result.delete(result.length() - 2, result.length());
             DatabaseConnection.closeConnection();
             return result.toString();
@@ -81,5 +79,77 @@ public class GruppoDao {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
+    }
+
+    public ArrayList<Gruppo> getNamedGroups(String titolo, int IdUtente) {
+        String sql = "select gru.\"Nome\", gru.\"ID_GRUPPO\" from (select gr.\"ID_GRUPPO\" from \"SOCIALGROUP_SCHEMA\".\"GRUPPO\" gr\n" +
+                "\t\texcept (select pa.\"ID_GRUPPO\" from \n" +
+                "\t\t\"SOCIALGROUP_SCHEMA\".\"PARTECIPA\" pa\n" +
+                "\t\twhere pa.\"ID_UTENTE\" = ?)) as x natural join \n" +
+                "\t\t\"SOCIALGROUP_SCHEMA\".\"GRUPPO\" gru\n" +
+                "\t\twhere gru.\"Nome\" LIKE \'%" + titolo + "%\'";
+        ArrayList<Gruppo> gruppi = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, IdUtente);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Gruppo gruppo = new Gruppo();
+                gruppo.setNome(rs.getString(1));
+                gruppo.setIdGruppo(rs.getInt(2));
+                gruppo.setTema(gruppo.getTema());
+                gruppi.add(gruppo);
+            }
+            DatabaseConnection.closeConnection();
+            return gruppi;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<Gruppo> getThemeGroups(String tema, int IdUtente) {
+        String sql = "select gru.\"Nome\", gru.\"ID_GRUPPO\" from (select gr.\"ID_GRUPPO\" from \n" +
+                "\t\"SOCIALGROUP_SCHEMA\".\"GRUPPO\" gr\n" +
+                "\t\texcept (select pa.\"ID_GRUPPO\" from \n" +
+                "\t\t\"SOCIALGROUP_SCHEMA\".\"PARTECIPA\" pa\n" +
+                "\t\twhere pa.\"ID_UTENTE\" = ?)) as x natural join \n" +
+                "\t\t\"SOCIALGROUP_SCHEMA\".\"GRUPPO\" gru natural join\n" +
+                "\t\t\"SOCIALGROUP_SCHEMA\".\"TEMA\" te\n" +
+                "\t\twhere te.\"Titolo\" LIKE \'%" + tema + "%\'";
+        ArrayList<Gruppo> gruppi = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, IdUtente);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Gruppo gruppo = new Gruppo();
+                gruppo.setNome(rs.getString(1));
+                gruppo.setIdGruppo(rs.getInt(2));
+                gruppo.setTema(gruppo.getTema());
+                gruppi.add(gruppo);
+            }
+            DatabaseConnection.closeConnection();
+            return gruppi;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean isGroupAlreadyRequested(Utente utente, Gruppo gruppo) {
+        String sql = "select 1 from \"SOCIALGROUP_SCHEMA\".\"RICHIESTA\" where exists(select " +
+                     "ri.\"ID_RICHIESTA\" from \"SOCIALGROUP_SCHEMA\".\"RICHIESTA\" ri where ri.\"ID_UTENTE\" " +
+                     "= ? and ri.\"ID_GRUPPO\" = ?)";
+        try{
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, utente.getIdUtente());
+            ps.setInt(2, gruppo.getIdGruppo());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {return true;}
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
     }
 }

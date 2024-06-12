@@ -25,6 +25,7 @@ public class CreaController {
     @FXML private TextField TemaGruppoField;
     @FXML private Label TemaVuotoLabel;
     @FXML private Label NomeGruppoVuotoLabel;
+    @FXML private Label NameEqualsThemeLabel;
     private Stage stage;
     private Parent root;
     private Scene scene;
@@ -117,10 +118,17 @@ public class CreaController {
         if(NomeGruppoField.getText().isEmpty()) {
             NomeGruppoVuotoLabel.setVisible(true);
             TemaVuotoLabel.setVisible(false);
+            NameEqualsThemeLabel.setVisible(false);
         }else if(TemaGruppoField.getText().isEmpty()) {
             TemaVuotoLabel.setVisible(true);
             NomeGruppoVuotoLabel.setVisible(false);
-        } else {
+            NameEqualsThemeLabel.setVisible(false);
+        }else if(NomeGruppoField.getText().equals(TemaGruppoField.getText())) {
+            TemaVuotoLabel.setVisible(false);
+            NomeGruppoVuotoLabel.setVisible(false);
+            NameEqualsThemeLabel.setVisible(true);
+        }
+        else {
            Gruppo gruppo = new Gruppo();
            Utente utente = new Utente();
 

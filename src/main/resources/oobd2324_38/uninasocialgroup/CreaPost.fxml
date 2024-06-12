@@ -75,7 +75,7 @@
             </Label>
             <TextArea fx:id="PostField" layoutX="342.0" layoutY="143.0" prefHeight="111.0" prefWidth="250.0" promptText="Scrivi quello che pensi" wrapText="true" />
             <Button fx:id="CondividiButton" layoutX="408.0" layoutY="301.0" mnemonicParsing="false" onAction="#OnCondividiButtonClick" prefHeight="29.0" prefWidth="119.0" styleClass="LogInButton" stylesheets="@Style.css" text="Condividi" />
-            <Button fx:id="GoBackButton" layoutX="24.0" layoutY="26.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="GoBackButton" stylesheets="@Style.css" text="Torna indietro">
+            <Button fx:id="GoBackButton" layoutX="24.0" layoutY="26.0" mnemonicParsing="false" onAction="#OnGoBackButtonClicked" style="-fx-background-color: transparent;" styleClass="GoBackButton" stylesheets="@Style.css" text="Torna indietro">
                <graphic>
                   <FontAwesomeIcon glyphName="ARROW_LEFT" size="2em" text="" />
                </graphic>
@@ -108,14 +108,14 @@
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Button fx:id="HomeButton" mnemonicParsing="false" opacity="0.0" prefHeight="26.0" prefWidth="75.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" />
+                <Button fx:id="HomeButton" mnemonicParsing="false" onAction="#OnHomeButtonClick" opacity="0.0" prefHeight="26.0" prefWidth="75.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" />
                 <Button fx:id="LogOutButton" mnemonicParsing="false" onAction="#LogOutOnClick" opacity="0.0" prefHeight="32.0" prefWidth="54.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Label text="CREA" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Button fx:id="CreaButton" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="64.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button fx:id="CreaButton" mnemonicParsing="false" onAction="#OnCreaButtonClick" opacity="0.0" prefHeight="34.0" prefWidth="64.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </left>

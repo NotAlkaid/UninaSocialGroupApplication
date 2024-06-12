@@ -139,4 +139,44 @@ public class CreaPostController {
             SwitchToGroupPageScene();
         }
     }
+
+    public void SwitchToCreaScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Crea.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        CreaController controller = loader.getController();
+        controller.setUtenteLoggato(UtenteLoggato);
+        controller.setNotificationsNumber(NotificationsNumber);
+        controller.InitPage();
+    }
+
+    public void OnCreaButtonClick() throws IOException {
+        SwitchToCreaScene();
+    }
+
+    public void SwitchToHomePageScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Home.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        HomeController controller  = loader.getController();
+        controller.InitPage(UtenteLoggato);
+    }
+
+    public void OnHomeButtonClick() throws IOException {
+        SwitchToHomePageScene();
+    }
+
+    public void OnGoBackButtonClicked() throws IOException {
+        SwitchToGroupPageScene();
+    }
 }

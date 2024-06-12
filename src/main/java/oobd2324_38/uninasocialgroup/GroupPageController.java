@@ -164,9 +164,33 @@ public class GroupPageController {
         controller.setUtenteLoggato(UtenteLoggato1);
         controller.setNotificationsNumber(NotificationsNumber1);
         controller.setIdGruppo(idGruppo);
+        controller.initPage();
     }
 
     public void OnCreaPostButtonClick() throws IOException {
         SwitchToCreaPost();
+    }
+
+    public void OnHomeButtonClick() throws IOException {
+        SwitchToHomePageScene();
+    }
+
+    public void SwitchToCreaScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Crea.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        CreaController controller = loader.getController();
+        controller.setUtenteLoggato(UtenteLoggato.getText());
+        controller.setNotificationsNumber(Integer.parseInt(NotificationsNumber.getText()));
+        controller.InitPage();
+    }
+
+    public void OnCreaButtonClick() throws IOException {
+        SwitchToCreaScene();
     }
 }

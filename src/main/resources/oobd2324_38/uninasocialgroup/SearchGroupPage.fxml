@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oobd2324_38.uninasocialgroup.CreaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oobd2324_38.uninasocialgroup.SearchGroupController">
     <top>
         <AnchorPane prefHeight="55.0" prefWidth="900.0" styleClass="PageColor" stylesheets="@Style.css" BorderPane.alignment="CENTER">
             <children>
@@ -23,7 +23,6 @@
                 </Label>
                 <FontAwesomeIcon fill="WHITE" glyphName="GROUP" layoutX="14.0" layoutY="35.0" size="2em" />
                 <TextField fx:id="HomeSearchBar" layoutX="217.0" layoutY="14.0" prefHeight="26.0" prefWidth="257.0" promptText="Cerca un gruppo" styleClass="HomeSearchBar" stylesheets="@Style.css" />
-                <Button layoutX="483.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" />
                 <GridPane alignment="TOP_RIGHT" layoutX="558.4" layoutY="4.0" prefHeight="51.0" prefWidth="349.0" AnchorPane.leftAnchor="558.0" AnchorPane.rightAnchor="0.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="435.200048828125" minWidth="10.0" prefWidth="435.200048828125" />
@@ -34,7 +33,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label fx:id="UtenteLoggatoLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="20.0" prefWidth="399.0" text="Nome utente loggato" textFill="WHITE">
+                        <Label fx:id="UtenteLoggato" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="20.0" prefWidth="399.0" text="Nome utente loggato" textFill="WHITE">
                             <font>
                                 <Font name="System Bold Italic" size="14.0" />
                             </font>
@@ -48,16 +47,31 @@
                                 <FontAwesomeIcon fill="WHITE" glyphName="BELL" size="2.5em" styleClass="Logo" wrappingWidth="31.199890315532684" />
                             </graphic>
                         </Button>
-                        <Label fx:id="NotificationsNumberLabel" alignment="TOP_CENTER" prefHeight="14.0" prefWidth="17.0" styleClass="NotificationNumber" stylesheets="@Style.css" text="0" textAlignment="RIGHT" visible="false" GridPane.columnIndex="1" />
+                        <Label fx:id="NotificationsNumber" alignment="TOP_CENTER" prefHeight="14.0" prefWidth="17.0" styleClass="NotificationNumber" stylesheets="@Style.css" text="0" textAlignment="RIGHT" visible="false" GridPane.columnIndex="1" />
                     </children>
                 </GridPane>
                 <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" layoutX="486.0" layoutY="34.0" size="1.7em" styleClass="Logo" text="" />
+                <Button layoutX="483.0" layoutY="15.0" mnemonicParsing="false" onAction="#OnLensClicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" />
             </children>
         </AnchorPane>
     </top>
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@Style.css" BorderPane.alignment="CENTER_LEFT">
             <children>
+                <Label layoutX="14.0" layoutY="51.0" text="Ecco cosa abbiamo trovato:">
+                    <font>
+                        <Font name="System Bold" size="36.0" />
+                    </font>
+                </Label>
+                <ScrollPane layoutX="9.0" layoutY="122.0" prefHeight="395.0" prefWidth="914.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
+                    <content>
+                        <GridPane fx:id="GridGroups" prefHeight="41.0" prefWidth="66.0">
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                        </GridPane>
+                    </content>
+                </ScrollPane>
                 <ScrollPane fx:id="NotificationsPane" hbarPolicy="NEVER" layoutX="643.0" layoutY="-1.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
                     <content>
                         <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="271.0">
@@ -67,26 +81,6 @@
                         </GridPane>
                     </content>
                 </ScrollPane>
-            <TextField fx:id="NomeGruppoField" layoutX="339.0" layoutY="100.0" prefHeight="26.0" prefWidth="254.0" promptText="Inserisci un nome" styleClass="LoginTextFields" stylesheets="@Style.css" />
-            <TextField fx:id="TemaGruppoField" layoutX="339.0" layoutY="147.0" prefHeight="26.0" prefWidth="254.0" promptText="Inserisci un tema" styleClass="LoginTextFields" stylesheets="@Style.css" />
-            <Label layoutX="310.0" layoutY="14.0" text="CREA UN GRUPPO">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Label>
-            <Label layoutX="254.0" layoutY="105.0" text="Nome gruppo" />
-            <Label layoutX="237.0" layoutY="152.0" text="Tema del gruppo" />
-            <Button fx:id="CreaGruppoButton" layoutX="356.0" layoutY="229.0" mnemonicParsing="false" onAction="#OnCreaButtonClick" prefHeight="73.0" prefWidth="219.0" styleClass="LogInButton" stylesheets="@Style.css" text="CREA">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon glyphName="PLUS" size="2em" />
-               </graphic>
-            </Button>
-            <Label fx:id="NomeGruppoVuotoLabel" layoutX="409.0" layoutY="68.0" text="Nome gruppo vuoto!" textFill="RED" visible="false" />
-            <Label fx:id="TemaVuotoLabel" layoutX="402.0" layoutY="68.0" text="Tema del gruppo vuoto!" textFill="RED" visible="false" />
-            <Label fx:id="NameEqualsThemeLabel" layoutX="369.0" layoutY="68.0" text="Nome e tema devono essere diversi!" textFill="RED" visible="false" />
             </children></AnchorPane>
     </center>
     <left>
@@ -114,14 +108,14 @@
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Button fx:id="HomeButton" mnemonicParsing="false" onAction="#OnHomeButtonClick" opacity="0.0" prefHeight="26.0" prefWidth="75.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" />
+                <Button mnemonicParsing="false" onAction="#OnHomeButtonClick" opacity="0.0" prefHeight="26.0" prefWidth="75.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" />
                 <Button mnemonicParsing="false" onAction="#LogOutOnClick" opacity="0.0" prefHeight="32.0" prefWidth="54.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Label text="CREA" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Button mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="64.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button mnemonicParsing="false" onAction="#OnCreaButtonClick" opacity="0.0" prefHeight="34.0" prefWidth="64.0" styleClass="HomeButtons" stylesheets="@Style.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </left>
