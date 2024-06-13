@@ -170,4 +170,9 @@ public class Utente {
         UtenteDao utenteDao = new UtenteDao();
         return utenteDao.GetUsernameById(this);
     }
+
+    public ArrayList<Richiesta> GetAllGroupRequests() {
+        UtenteDao utenteDao = new UtenteDao();
+        return utenteDao.getGroupRequests(this);
+    }
 }

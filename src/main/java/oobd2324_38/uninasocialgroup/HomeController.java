@@ -1,5 +1,8 @@
 package oobd2324_38.uninasocialgroup;
 
+import de.jensd.fx.glyphs.GlyphIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -49,7 +52,6 @@ public class HomeController {
                     controller.setIdGruppo(GruppiUtente.get(i).getIdGruppo());
                     controller.setNotificationsNumber(Integer.parseInt(NotificationsNumber.getText()));
                     controller.InitializeTag(GruppiUtente.get(i));
-                    System.out.println(i);
                     if (cols == 3) {
                         cols = 0;
                         rows++;
@@ -139,5 +141,24 @@ public class HomeController {
         controller.setNotificationsNumber1(NotificationsNumber.getText());
         controller.setIdUtente(utente.getIdUtente());
         controller.InitPage(HomeSearchBar.getText(), utente.getIdUtente());
+    }
+
+    public void SwitchToRichiesteScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("RichiesteAccesso.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        RichiesteAccessoController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato.getText());
+        controller.setNotificationsNumber1(Integer.parseInt(NotificationsNumber.getText()));
+        controller.InitPage();
+    }
+
+    public void OnMenuRequestButtonClick() throws IOException {
+        SwitchToRichiesteScene();
     }
 }

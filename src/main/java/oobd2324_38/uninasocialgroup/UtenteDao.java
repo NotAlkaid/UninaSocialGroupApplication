@@ -122,4 +122,53 @@ public class UtenteDao {
         }
         return null;
     }
+
+    public ArrayList<Gruppo> getOwnedGroups(Utente utente) {
+        ArrayList<Gruppo> groups = new ArrayList<>();
+        String sql = "select \"ID_GRUPPO\" from \"SOCIALGROUP_SCHEMA\".\"GRUPPO\" " +
+                     "where \"ID_CREATORE\" = ?";
+        try{
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, utente.getIdUtente());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                Gruppo gruppo = new Gruppo();
+                gruppo.setIdGruppo(rs.getInt(1));
+                gruppo.setNome(gruppo.getNomeById(gruppo.getIdGruppo()));
+                groups.add(gruppo);
+            }
+            DatabaseConnection.closeConnection();
+            return groups;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<Richiesta> getGroupRequests(Utente utente) {
+        ArrayList<Richiesta> richieste = new ArrayList<>();
+        ArrayList<Gruppo> groups = getOwnedGroups(utente);
+        String sql = "select * from \"SOCIALGROUP_SCHEMA\".get_group_requests(?)";
+
+        if (!groups.isEmpty()) {
+            for (Gruppo gruppo : groups) {
+                try {
+                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+                    ps.setInt(1, gruppo.getIdGruppo());
+                    ResultSet rs = ps.executeQuery();
+                    while (rs.next()) {
+                        Utente utenteRichiedente = new Utente();
+                        utenteRichiedente.setUsername(rs.getString(2));
+                        utenteRichiedente.setIdUtente(utente.getIdByUsername());
+                        Richiesta richiesta = new Richiesta(false, utenteRichiedente, gruppo, rs.getInt(1));
+                        richieste.add(richiesta);
+                    }
+                    DatabaseConnection.closeConnection();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return richieste;
+        }
+        return null;
+    }
 }

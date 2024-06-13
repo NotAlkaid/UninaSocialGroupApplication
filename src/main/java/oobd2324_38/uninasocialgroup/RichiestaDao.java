@@ -22,4 +22,30 @@ public class RichiestaDao {
         }
         return false;
     }
+
+    public void AccettaRichiesta(Richiesta richiesta) {
+        String sql = "select * from \"SOCIALGROUP_SCHEMA\".accept_request(?)";
+
+        try {
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, richiesta.getIdRichiesta());
+            ResultSet rs = ps.executeQuery();
+            DatabaseConnection.closeConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void RifiutaRichiesta(Richiesta richiesta) {
+        String sql = "select * from \"SOCIALGROUP_SCHEMA\".reject_request(?)";
+
+        try {
+            PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
+            ps.setInt(1, richiesta.getIdRichiesta());
+            ResultSet rs = ps.executeQuery();
+            DatabaseConnection.closeConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

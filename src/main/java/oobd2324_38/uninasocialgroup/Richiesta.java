@@ -11,6 +11,13 @@ public class Richiesta {
     private Utente Utente;
     private Gruppo Gruppo;
 
+    public Richiesta(boolean Esito, Utente Utente, Gruppo Gruppo, int idRichiesta) {
+        this.Esito = Esito;
+        this.Utente = Utente;
+        this.Gruppo = Gruppo;
+        this.idRichiesta = idRichiesta;
+    }
+
     public Richiesta(boolean Esito, Utente Utente, Gruppo Gruppo) {
         this.Esito = Esito;
         this.Utente = Utente;
@@ -52,5 +59,15 @@ public class Richiesta {
     public boolean insertRequest() {
         RichiestaDao richiestaDao = new RichiestaDao();
         return richiestaDao.insertRichiesta(this);
+    }
+
+    public void accettaRichiesta() {
+        RichiestaDao richiestaDao = new RichiestaDao();
+        richiestaDao.AccettaRichiesta(this);
+    }
+
+    public void rifiutaRichiesta() {
+        RichiestaDao richiestaDao = new RichiestaDao();
+        richiestaDao.RifiutaRichiesta(this);
     }
 }
