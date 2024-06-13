@@ -59,7 +59,7 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@Style.css" BorderPane.alignment="CENTER_LEFT">
             <children>
-                <ScrollPane fx:id="NotificationsPane" hbarPolicy="NEVER" layoutX="625.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
+                <ScrollPane fx:id="NotificationsPane" layoutX="625.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
                     <content>
                         <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="271.0">
                             <rowConstraints>

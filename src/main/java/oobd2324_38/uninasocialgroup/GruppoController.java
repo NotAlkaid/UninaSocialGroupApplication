@@ -12,6 +12,7 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Random;
 import java.util.regex.Pattern;
 
@@ -50,7 +51,7 @@ public class GruppoController {
         return gruppo.GetTemi();
     }
 
-    public void SwitchToGroupPageScene() throws IOException {
+    public void SwitchToGroupPageScene() throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("GroupPage.fxml"));
         root = loader.load();
@@ -66,7 +67,7 @@ public class GruppoController {
         controller.initPage();
     }
 
-    public void OnGroupTagClicked() throws IOException {
+    public void OnGroupTagClicked() throws IOException, SQLException {
         SwitchToGroupPageScene();
     }
 

@@ -57,7 +57,7 @@
                   </MenuButton>
                </children>
             </GridPane>
-            <Button layoutX="474.0" layoutY="13.0" mnemonicParsing="false" onAction="#OnLensClicked" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css">
+            <Button layoutX="480.0" layoutY="14.0" mnemonicParsing="false" onAction="#OnLensClicked" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" size="1.5em" />
                </graphic>
@@ -82,7 +82,7 @@
                   </GridPane>
                </content>
             </ScrollPane>
-            <ScrollPane fx:id="NotificationsPane" hbarPolicy="NEVER" layoutX="643.0" layoutY="-1.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
+            <ScrollPane fx:id="NotificationsPane" layoutX="643.0" layoutY="-1.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
                <content>
                   <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="271.0">
                     <rowConstraints>

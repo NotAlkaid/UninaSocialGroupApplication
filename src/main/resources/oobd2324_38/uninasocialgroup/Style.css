@@ -136,7 +136,7 @@
 }
 
 .LikeIcon:hover {
-    -fx-fill: red;
+    -fx-fill: #ff0000;
 }
 
 .GoBackButton:hover {

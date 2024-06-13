@@ -3,6 +3,8 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,7 +25,10 @@
                 </Label>
                 <FontAwesomeIcon fill="WHITE" glyphName="GROUP" layoutX="14.0" layoutY="35.0" size="2em" />
                 <TextField fx:id="HomeSearchBar" layoutX="217.0" layoutY="14.0" prefHeight="26.0" prefWidth="257.0" promptText="Cerca un gruppo" styleClass="HomeSearchBar" stylesheets="@Style.css" />
-                <Button layoutX="483.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" />
+                <Button layoutX="480.0" layoutY="14.0" mnemonicParsing="false" onAction="#OnLensClicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css">
+               <graphic>
+                      <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" size="1.5em" styleClass="Logo" text="" />
+               </graphic></Button>
                 <GridPane alignment="TOP_RIGHT" layoutX="558.4" layoutY="4.0" prefHeight="51.0" prefWidth="349.0" AnchorPane.leftAnchor="558.0" AnchorPane.rightAnchor="0.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="435.200048828125" minWidth="10.0" prefWidth="435.200048828125" />
@@ -39,26 +44,30 @@
                                 <Font name="System Bold Italic" size="14.0" />
                             </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="2">
-                            <graphic>
-                                <FontAwesomeIcon fill="WHITE" glyphName="BARS" size="3em" styleClass="Logo" wrappingWidth="37.25717234611511" />
-                            </graphic></Button>
                         <Button fx:id="NotificationButton" mnemonicParsing="false" onAction="#OnNotificationButtonClick" prefHeight="38.0" prefWidth="37.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="1">
                             <graphic>
                                 <FontAwesomeIcon fill="WHITE" glyphName="BELL" size="2.5em" styleClass="Logo" wrappingWidth="31.199890315532684" />
                             </graphic>
                         </Button>
                         <Label fx:id="NotificationsNumberLabel" alignment="TOP_CENTER" prefHeight="14.0" prefWidth="17.0" styleClass="NotificationNumber" stylesheets="@Style.css" text="0" textAlignment="RIGHT" visible="false" GridPane.columnIndex="1" />
+                  <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="2">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#OnMenuRequestButtonClick" text="Visualizza richieste di accesso" />
+                        <MenuItem mnemonicParsing="false" text="Visualizza resoconto mensile" />
+                     </items>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="BARS" size="2.5em" />
+                     </graphic>
+                  </MenuButton>
                     </children>
                 </GridPane>
-                <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" layoutX="486.0" layoutY="34.0" size="1.7em" styleClass="Logo" text="" />
             </children>
         </AnchorPane>
     </top>
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@Style.css" BorderPane.alignment="CENTER_LEFT">
             <children>
-                <ScrollPane fx:id="NotificationsPane" hbarPolicy="NEVER" layoutX="643.0" layoutY="-1.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
+                <ScrollPane fx:id="NotificationsPane" layoutX="643.0" layoutY="-1.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
                     <content>
                         <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="271.0">
                             <rowConstraints>

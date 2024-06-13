@@ -8,15 +8,13 @@ import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -28,6 +26,7 @@ public class GroupPageController {
     @FXML private ScrollPane NotificationsPane;
     @FXML private GridPane NotificationsGrid;
     @FXML private GridPane GridPosts;
+    @FXML private TextField HomeSearchBar;
     private int idGruppo;
     private String UtenteLoggato1;
     private int NotificationsNumber1;
@@ -35,7 +34,7 @@ public class GroupPageController {
     private Parent root;
     private Scene scene;
 
-    public void initPage() throws IOException {
+    public void initPage() throws IOException, SQLException {
         Gruppo gruppo = new Gruppo();
         gruppo.setIdGruppo(idGruppo);
         Utente utente = new Utente();
@@ -61,6 +60,11 @@ public class GroupPageController {
                     Separator separator = new Separator();
                     separator.setOrientation(Orientation.HORIZONTAL);
                     PostController controller = loader.getController();
+                    controller.setLikeNumber(allPosts.get(i).getLikes());
+                    controller.setUtenteloggato(UtenteLoggato1);
+                    controller.setCommentNumber(allPosts.get(i).getComments());
+                    controller.setIdGruppo(idGruppo);
+                    controller.setNotificationsNumber(NotificationsNumber1);
                     controller.initializePost(allPosts.get(i));
                     GridPosts.add(PostBox, 0, rows);
                     GridPane.setMargin(GridPosts, new Insets(10, 10, 10, 10));
@@ -192,5 +196,43 @@ public class GroupPageController {
 
     public void OnCreaButtonClick() throws IOException {
         SwitchToCreaScene();
+    }
+
+    public void SwitchToRichiesteScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("RichiesteAccesso.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        RichiesteAccessoController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato.getText());
+        controller.setNotificationsNumber1(Integer.parseInt(NotificationsNumber.getText()));
+        controller.InitPage();
+    }
+
+    public void OnMenuRequestButtonClick() throws IOException {
+        SwitchToRichiesteScene();
+    }
+
+    public void OnLensClicked() throws IOException {
+        Utente utente = new Utente();
+        utente.setUsername(UtenteLoggato.getText());
+        utente.setIdUtente(utente.getIdByUsername());
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("SearchGroupPage.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        SearchGroupController controller = loader.getController();
+        controller.setUtenteLoggato(UtenteLoggato.getText());
+        controller.setNotificationsNumber1(NotificationsNumber.getText());
+        controller.setIdUtente(utente.getIdUtente());
+        controller.InitPage(HomeSearchBar.getText(), utente.getIdUtente());
     }
 }

@@ -2,7 +2,6 @@ package oobd2324_38.uninasocialgroup;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Post {
@@ -12,6 +11,8 @@ public class Post {
     private String Testo;
     private Utente Autore;
     private Gruppo inGruppo;
+
+    public Post(){}
 
     public Post(int IdPost, LocalDate DataPubblicazione, LocalTime OraPubblicazione, String Testo) {
         this.idPost = IdPost;
@@ -77,5 +78,20 @@ public class Post {
     public void insertPost() throws SQLException {
         PostDao postDao = new PostDao();
         postDao.insertPost(this);
+    }
+
+    public int getLikes() throws SQLException {
+        PostDao postDao = new PostDao();
+        return postDao.getPostLikesNumber(this);
+    }
+
+    public int getComments() throws SQLException {
+        PostDao postDao = new PostDao();
+        return postDao.getPostCommentsNumber(this);
+    }
+
+    public boolean isPostLikedByUser(Utente utente) throws SQLException {
+        PostDao postDao = new PostDao();
+        return postDao.isPostLikedByUser(this, utente);
     }
 }

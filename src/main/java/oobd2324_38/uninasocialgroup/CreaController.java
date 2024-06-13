@@ -26,6 +26,7 @@ public class CreaController {
     @FXML private Label TemaVuotoLabel;
     @FXML private Label NomeGruppoVuotoLabel;
     @FXML private Label NameEqualsThemeLabel;
+    @FXML private TextField HomeSearchBar;
     private Stage stage;
     private Parent root;
     private Scene scene;
@@ -147,4 +148,43 @@ public class CreaController {
            }
         }
     }
+
+    public void OnLensClicked() throws IOException {
+        Utente utente = new Utente();
+        utente.setUsername(UtenteLoggato);
+        utente.setIdUtente(utente.getIdByUsername());
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("SearchGroupPage.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        SearchGroupController controller = loader.getController();
+        controller.setUtenteLoggato(UtenteLoggato);
+        controller.setNotificationsNumber1(String.valueOf(NotificationsNumber));
+        controller.setIdUtente(utente.getIdUtente());
+        controller.InitPage(HomeSearchBar.getText(), utente.getIdUtente());
+    }
+
+    public void SwitchToRichiesteScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("RichiesteAccesso.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        RichiesteAccessoController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato);
+        controller.setNotificationsNumber1(NotificationsNumber);
+        controller.InitPage();
+    }
+
+    public void OnMenuRequestButtonClick() throws IOException {
+        SwitchToRichiesteScene();
+    }
+
 }

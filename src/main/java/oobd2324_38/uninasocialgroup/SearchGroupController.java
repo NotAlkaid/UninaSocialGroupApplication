@@ -204,4 +204,23 @@ public class SearchGroupController {
     public void OnHomeButtonClick() throws IOException {
         SwitchToHomePageScene();
     }
+
+    public void SwitchToRichiesteScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("RichiesteAccesso.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        RichiesteAccessoController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato.getText());
+        controller.setNotificationsNumber1(Integer.parseInt(NotificationsNumber.getText()));
+        controller.InitPage();
+    }
+
+    public void OnMenuRequestButtonClick() throws IOException {
+        SwitchToRichiesteScene();
+    }
 }

@@ -105,7 +105,7 @@ public class CreaPostController {
         this.idGruppo = idGruppo;
     }
 
-    public void SwitchToGroupPageScene() throws IOException {
+    public void SwitchToGroupPageScene() throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("GroupPage.fxml"));
         root = loader.load();
@@ -121,7 +121,7 @@ public class CreaPostController {
         controller.initPage();
     }
 
-    public void OnCondividiButtonClick() throws IOException {
+    public void OnCondividiButtonClick() throws IOException, SQLException {
         if(PostField.getText().isEmpty()) {
             CampoVuotoLabel.setVisible(true);
         } else {
@@ -176,7 +176,7 @@ public class CreaPostController {
         SwitchToHomePageScene();
     }
 
-    public void OnGoBackButtonClicked() throws IOException {
+    public void OnGoBackButtonClicked() throws IOException, SQLException {
         SwitchToGroupPageScene();
     }
 }

@@ -44,7 +44,7 @@ public class RichiesteAccessoController {
         }
         int rows = 1;
 
-        if(!Richieste.isEmpty()) {
+        if(Richieste != null) {
             try {
                 for (int i = 0; i < Richieste.size(); i++) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
