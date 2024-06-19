@@ -175,4 +175,9 @@ public class Utente {
         UtenteDao utenteDao = new UtenteDao();
         return utenteDao.getGroupRequests(this);
     }
+
+    public ArrayList<Gruppo> GetOwnedGroups() {
+        UtenteDao utenteDao = new UtenteDao();
+        return utenteDao.getOwnedGroups(this);
+    }
 }

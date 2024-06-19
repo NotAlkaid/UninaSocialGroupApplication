@@ -49,7 +49,7 @@
                   <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="2">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#OnMenuRequestButtonClick" text="Visualizza richieste di accesso" />
-                      <MenuItem mnemonicParsing="false" text="Visualizza resoconto mensile" />
+                      <MenuItem mnemonicParsing="false" onAction="#OnMenuReportButtonClick" text="Visualizza resoconto mensile" />
                     </items>
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="BARS" size="2.5em" />

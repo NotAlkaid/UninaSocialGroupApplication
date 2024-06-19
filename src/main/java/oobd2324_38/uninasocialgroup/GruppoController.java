@@ -27,6 +27,7 @@ public class GruppoController {
     private Stage stage;
     private Parent root;
     private Scene scene;
+    private boolean SwitchFrom = true;
 
     public void InitializeTag(Gruppo gruppo) {
         NomeGruppo.setText(gruppo.getNomeById(gruppo.getIdGruppo()));
@@ -68,7 +69,11 @@ public class GruppoController {
     }
 
     public void OnGroupTagClicked() throws IOException, SQLException {
-        SwitchToGroupPageScene();
+        if(SwitchFrom) {
+            SwitchToGroupPageScene();
+        } else {
+
+        }
     }
 
     public String getUtenteLoggato() {

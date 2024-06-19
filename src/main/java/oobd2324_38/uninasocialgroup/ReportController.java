@@ -1,39 +1,41 @@
 package oobd2324_38.uninasocialgroup;
 
-import de.jensd.fx.glyphs.GlyphIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class HomeController {
+public class ReportController {
+    private String UtenteLoggato1;
     @FXML private Label UtenteLoggato;
     @FXML private Label NotificationsNumber;
-    @FXML private TextField HomeSearchBar;
     @FXML private GridPane GridGroups;
+    @FXML private ScrollPane GroupsScrollPane;
     @FXML private ScrollPane NotificationsPane;
     @FXML private GridPane NotificationsGrid;
+    @FXML private TextField HomeSearchBar;
     private Stage stage;
     private Parent root;
     private Scene scene;
 
-    public void InitPage(String username) {
+    public void initPage() {
         Utente utente = new Utente();
-        utente.setUsername(username);
+        utente.setUsername(UtenteLoggato1);
         utente.setIdUtente(utente.getIdByUsername());
-        ArrayList<Gruppo> GruppiUtente = utente.getGruppi();
+        ArrayList<Gruppo> GruppiUtente = utente.GetOwnedGroups();
 
-        UtenteLoggato.setText(username);
+        UtenteLoggato.setText(UtenteLoggato1);
         if(utente.getNotificationsNumber() != 0) {
             NotificationsNumber.setText(String.valueOf(utente.getNotificationsNumber()));
             NotificationsNumber.setVisible(true);
@@ -60,6 +62,8 @@ public class HomeController {
                     GridPane.setMargin(GroupBox, new Insets(10, 10, 10, 10));
                     cols++;
                 }
+            } else {
+                GroupsScrollPane.setVisible(false);
             }
         }catch(IOException e) {
             e.printStackTrace();
@@ -162,22 +166,36 @@ public class HomeController {
         SwitchToRichiesteScene();
     }
 
-    public void SwitchToReportScene() throws IOException {
+    public void SwitchToHomePageScene() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("ReportPage.fxml"));
+        loader.setLocation(getClass().getResource("Home.fxml"));
         root = loader.load();
         scene = new Scene(root);
         stage = Main.stage;
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
-        ReportController controller = loader.getController();
-        controller.setUtenteLoggato1(UtenteLoggato.getText());
-        controller.setNotificationsNumber(NotificationsNumber.getText());
-        controller.initPage();
+        HomeController controller  = loader.getController();
+        controller.InitPage(UtenteLoggato.getText());
     }
 
-    public void OnMenuReportButtonClick() throws IOException {
-        SwitchToReportScene();
+    public void OnHomeButtonClick() throws IOException {
+        SwitchToHomePageScene();
+    }
+
+    public String getUtenteLoggato1() {
+        return UtenteLoggato1;
+    }
+
+    public void setUtenteLoggato1(String utenteLoggato1) {
+        UtenteLoggato1 = utenteLoggato1;
+    }
+
+    public Label getNotificationsNumber() {
+        return NotificationsNumber;
+    }
+
+    public void setNotificationsNumber(String notificationsNumber) {
+        NotificationsNumber.setText(notificationsNumber);
     }
 }
