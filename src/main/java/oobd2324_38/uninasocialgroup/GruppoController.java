@@ -27,7 +27,7 @@ public class GruppoController {
     private Stage stage;
     private Parent root;
     private Scene scene;
-    private boolean SwitchFrom = true;
+    private String SwitchFrom = "";
 
     public void InitializeTag(Gruppo gruppo) {
         NomeGruppo.setText(gruppo.getNomeById(gruppo.getIdGruppo()));
@@ -68,11 +68,30 @@ public class GruppoController {
         controller.initPage();
     }
 
-    public void OnGroupTagClicked() throws IOException, SQLException {
-        if(SwitchFrom) {
-            SwitchToGroupPageScene();
-        } else {
+    public void SwitchToFunctionalReportScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("FunctionalReport.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        FunctionalReportController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato);
+        controller.setNotificationsNumber1(String.valueOf(NotificationsNumber));
+        Gruppo gruppo = new Gruppo();
+        gruppo.setIdGruppo(IdGruppo);
+        gruppo.setNome(NomeGruppo.getText());
+        controller.setGruppo(gruppo);
+        controller.initPage();
+    }
 
+    public void OnGroupTagClicked() throws IOException, SQLException {
+        if(this.SwitchFrom.equals("FunctionalReport")) {
+            SwitchToFunctionalReportScene();
+        } else {
+            SwitchToGroupPageScene();
         }
     }
 
@@ -98,5 +117,13 @@ public class GruppoController {
 
     public void setIdGruppo(int idGruppo) {
         IdGruppo = idGruppo;
+    }
+
+    public String getSwitchFrom() {
+        return SwitchFrom;
+    }
+
+    public void setSwitchFrom(String switchFrom) {
+        SwitchFrom = switchFrom;
     }
 }

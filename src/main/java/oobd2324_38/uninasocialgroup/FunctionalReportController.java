@@ -16,15 +16,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ReportController {
+public class FunctionalReportController {
     private String UtenteLoggato1;
+    private String NotificationsNumber1;
     @FXML private Label UtenteLoggato;
     @FXML private Label NotificationsNumber;
-    @FXML private GridPane GridGroups;
-    @FXML private ScrollPane GroupsScrollPane;
     @FXML private ScrollPane NotificationsPane;
     @FXML private GridPane NotificationsGrid;
     @FXML private TextField HomeSearchBar;
+    private Gruppo gruppo;
     private Stage stage;
     private Parent root;
     private Scene scene;
@@ -33,41 +33,11 @@ public class ReportController {
         Utente utente = new Utente();
         utente.setUsername(UtenteLoggato1);
         utente.setIdUtente(utente.getIdByUsername());
-        ArrayList<Gruppo> GruppiUtente = utente.GetOwnedGroups();
 
         UtenteLoggato.setText(UtenteLoggato1);
         if(utente.getNotificationsNumber() != 0) {
             NotificationsNumber.setText(String.valueOf(utente.getNotificationsNumber()));
             NotificationsNumber.setVisible(true);
-        }
-        int rows = 1;
-        int cols = 0;
-
-        try {
-            if (GruppiUtente != null) {
-                for (int i = 0; i < GruppiUtente.size(); i++) {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("GroupTag.fxml"));
-                    GridPane GroupBox = loader.load();
-                    GruppoController controller = loader.getController();
-                    controller.setUtenteLoggato(UtenteLoggato.getText());
-                    controller.setIdGruppo(GruppiUtente.get(i).getIdGruppo());
-                    controller.setNotificationsNumber(Integer.parseInt(NotificationsNumber.getText()));
-                    controller.setSwitchFrom("FunctionalReport");
-                    controller.InitializeTag(GruppiUtente.get(i));
-                    if (cols == 3) {
-                        cols = 0;
-                        rows++;
-                    }
-                    GridGroups.add(GroupBox, cols, rows);
-                    GridPane.setMargin(GroupBox, new Insets(10, 10, 10, 10));
-                    cols++;
-                }
-            } else {
-                GroupsScrollPane.setVisible(false);
-            }
-        }catch(IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -167,6 +137,25 @@ public class ReportController {
         SwitchToRichiesteScene();
     }
 
+    public void SwitchToReportScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ReportPage.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        ReportController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato.getText());
+        controller.setNotificationsNumber(NotificationsNumber.getText());
+        controller.initPage();
+    }
+
+    public void OnMenuReportButtonClick() throws IOException {
+        SwitchToReportScene();
+    }
+
     public void SwitchToHomePageScene() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Home.fxml"));
@@ -184,6 +173,60 @@ public class ReportController {
         SwitchToHomePageScene();
     }
 
+    public void OnMonthSelected(int month) throws IOException {
+        switch(month) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+        }
+    }
+
+    public void OnJanuaryButtonClick() throws IOException {}
+
+    public void OnFebruaryButtonClick() throws IOException {}
+
+    public void OnMarchButtonClick() throws IOException {}
+
+    public void OnAprilButtonClick() throws IOException {}
+
+    public void OnMayButtonClick() throws IOException {}
+
+    public void OnJuneButtonClick() throws IOException {}
+
+    public void OnJulyButtonClick() throws IOException {}
+
+    public void OnAugustButtonClick() throws IOException {}
+
+    public void OnSeptemberButtonClick() throws IOException {}
+
+    public void OnOctoberButtonClick() throws IOException {}
+
+    public void OnNovemberButtonClick() throws IOException {}
+
+    public void OnDecemberButtonClick() throws IOException {}
+
+
     public String getUtenteLoggato1() {
         return UtenteLoggato1;
     }
@@ -192,13 +235,19 @@ public class ReportController {
         UtenteLoggato1 = utenteLoggato1;
     }
 
-    public Label getNotificationsNumber() {
-        return NotificationsNumber;
+    public String getNotificationsNumber1() {
+        return NotificationsNumber1;
     }
 
-    public void setNotificationsNumber(String notificationsNumber) {
-        NotificationsNumber.setText(notificationsNumber);
+    public void setNotificationsNumber1(String notificationsNumber1) {
+        NotificationsNumber1 = notificationsNumber1;
     }
 
+    public Gruppo getGruppo() {
+        return gruppo;
+    }
 
+    public void setGruppo(Gruppo gruppo) {
+        this.gruppo = gruppo;
+    }
 }
