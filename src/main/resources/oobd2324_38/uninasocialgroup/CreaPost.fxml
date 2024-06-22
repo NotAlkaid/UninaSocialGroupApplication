@@ -3,6 +3,8 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -40,16 +42,21 @@
                                 <Font name="System Bold Italic" size="14.0" />
                             </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="2">
-                            <graphic>
-                                <FontAwesomeIcon fill="WHITE" glyphName="BARS" size="3em" styleClass="Logo" wrappingWidth="37.25717234611511" />
-                            </graphic></Button>
                         <Button fx:id="NotificationButton" mnemonicParsing="false" onAction="#OnNotificationButtonClick" prefHeight="38.0" prefWidth="37.0" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="1">
                             <graphic>
                                 <FontAwesomeIcon fill="WHITE" glyphName="BELL" size="2.5em" styleClass="Logo" wrappingWidth="31.199890315532684" />
                             </graphic>
                         </Button>
                         <Label fx:id="NotificationsNumberLabel" alignment="TOP_CENTER" prefHeight="14.0" prefWidth="17.0" styleClass="NotificationNumber" stylesheets="@Style.css" text="0" textAlignment="RIGHT" visible="false" GridPane.columnIndex="1" />
+                  <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="Logo" stylesheets="@Style.css" GridPane.columnIndex="2">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#OnMenuRequestButtonClick" text="Visualizza richieste di accesso" />
+                        <MenuItem mnemonicParsing="false" onAction="#OnMenuReportButtonClick" text="Visualizza resoconto mensile" />
+                     </items>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="BARS" size="2.5em" />
+                     </graphic>
+                  </MenuButton>
                     </children>
                 </GridPane>
                 <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" layoutX="486.0" layoutY="34.0" size="1.7em" styleClass="Logo" text="" />

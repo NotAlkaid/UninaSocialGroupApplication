@@ -179,4 +179,23 @@ public class RichiesteAccessoController {
             }
         } else {NotificationsPane.setVisible(false);}
     }
+
+    public void SwitchToReportScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ReportPage.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        ReportController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato.getText());
+        controller.setNotificationsNumber(NotificationsNumber.getText());
+        controller.initPage();
+    }
+
+    public void OnMenuReportButtonClick() throws IOException {
+        SwitchToReportScene();
+    }
 }

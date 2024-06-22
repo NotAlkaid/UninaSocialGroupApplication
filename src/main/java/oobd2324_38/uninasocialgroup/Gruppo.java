@@ -97,4 +97,66 @@ public class Gruppo {
         GruppoDao gruppoDao = new GruppoDao();
         return gruppoDao.isGroupAlreadyRequested(utente, this);
     }
+
+    public Post getMostLikedPost(String mese) throws SQLException {
+        GruppoDao gruppoDao = new GruppoDao();
+        ArrayList<Post> groupPosts = gruppoDao.getPostsInMonth(this, mese);
+        if(groupPosts != null) {
+            if(!groupPosts.isEmpty()) {
+                Post MaxPost = groupPosts.getFirst();
+                for(int i = 0; i < groupPosts.size(); i++) {
+                    for(int j = i+1; j < groupPosts.size(); j++) {
+                        if(MaxPost.getLikes() < groupPosts.get(i).getLikes()) {
+                            MaxPost = groupPosts.get(i);
+                        }
+                    }
+                }
+                if(MaxPost.getLikes() == 0) return null;
+                return MaxPost;
+            }
+        }
+        return null;
+    }
+
+    public Post getMostCommentedPost(String mese) throws SQLException {
+        GruppoDao gruppoDao = new GruppoDao();
+        ArrayList<Post> groupPosts = gruppoDao.getPostsInMonth(this, mese);
+        if(groupPosts != null) {
+            if(!groupPosts.isEmpty()) {
+                Post MaxPost = groupPosts.getFirst();
+                for(int i = 0; i < groupPosts.size(); i++) {
+                    for(int j = i+1; j < groupPosts.size(); j++) {
+                        if(MaxPost.getComments() < groupPosts.get(i).getComments()) {
+                            MaxPost = groupPosts.get(i);
+                        }
+                    }
+                }
+                if(MaxPost.getComments() == 0) return null;
+                return MaxPost;
+            }
+        }
+        return null;
+    }
+
+    public int getMinimumSharedPostsNum(String mese) throws SQLException {
+        GruppoDao gruppoDao = new GruppoDao();
+        ArrayList<Post> groupPosts = gruppoDao.getPostsInMonth(this, mese);
+        if(groupPosts != null) {return 1;}
+        else {return 0;}
+    }
+
+    public int getAverageSharedPostsNum(String mese) throws SQLException {
+        GruppoDao gruppoDao = new GruppoDao();
+        int sum = 0;
+        int counter = 0;
+        ArrayList<Post> groupPosts = gruppoDao.getPostsInMonth(this, mese);
+        if(groupPosts != null) {
+            for(int i = 0; i < groupPosts.size(); i++) {
+                sum ++;
+                counter++;
+            }
+            return sum/counter;
+        }
+        else {return 0;}
+    }
 }

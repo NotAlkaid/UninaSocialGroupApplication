@@ -187,4 +187,23 @@ public class CreaController {
         SwitchToRichiesteScene();
     }
 
+    public void SwitchToReportScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ReportPage.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        ReportController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato);
+        controller.setNotificationsNumber(String.valueOf(NotificationsNumber));
+        controller.initPage();
+    }
+
+    public void OnMenuReportButtonClick() throws IOException {
+        SwitchToReportScene();
+    }
+
 }

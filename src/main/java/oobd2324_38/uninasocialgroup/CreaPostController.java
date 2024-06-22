@@ -179,4 +179,42 @@ public class CreaPostController {
     public void OnGoBackButtonClicked() throws IOException, SQLException {
         SwitchToGroupPageScene();
     }
+
+    public void SwitchToRichiesteScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("RichiesteAccesso.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        RichiesteAccessoController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato);
+        controller.setNotificationsNumber1(NotificationsNumber);
+        controller.InitPage();
+    }
+
+    public void OnMenuRequestButtonClick() throws IOException {
+        SwitchToRichiesteScene();
+    }
+
+    public void SwitchToReportScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ReportPage.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        ReportController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato);
+        controller.setNotificationsNumber(String.valueOf(NotificationsNumber));
+        controller.initPage();
+    }
+
+    public void OnMenuReportButtonClick() throws IOException {
+        SwitchToReportScene();
+    }
 }

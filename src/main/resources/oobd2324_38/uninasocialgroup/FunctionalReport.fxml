@@ -95,18 +95,18 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Gennaio" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Febbraio" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Marzo" GridPane.columnIndex="2" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Aprile" GridPane.columnIndex="3" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Maggio" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Giugno" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Luglio" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Agosto" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Settembre" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Ottobre" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Novembre" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Dicembre" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#OnJanuaryButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Gennaio" />
+                  <Button mnemonicParsing="false" onAction="#OnFebruaryButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Febbraio" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#OnMarchButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Marzo" GridPane.columnIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#OnAprilButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Aprile" GridPane.columnIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#OnMayButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Maggio" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#OnJuneButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Giugno" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#OnJulyButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Luglio" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#OnAugustButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Agosto" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#OnSeptemberButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Settembre" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#OnOctoberButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Ottobre" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#OnNovemberButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Novembre" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#OnDecemberButtonClick" prefHeight="60.0" prefWidth="120.0" styleClass="MonthButtons" stylesheets="@Style.css" text="Dicembre" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             </children></AnchorPane>

@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class FunctionalReportController {
@@ -173,58 +174,102 @@ public class FunctionalReportController {
         SwitchToHomePageScene();
     }
 
-    public void OnMonthSelected(int month) throws IOException {
-        switch(month) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
-            case 10:
-                break;
-            case 11:
-                break;
-            case 12:
-                break;
-        }
+    public void SwitchToGroupStatsPageScene(String mese) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("GroupStatsPage.fxml"));
+        root = loader.load();
+        scene = new Scene(root);
+        stage = Main.stage;
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        GroupStatsController controller = loader.getController();
+        controller.setUtenteLoggato1(UtenteLoggato1);
+        controller.setNotificationsNumber1(NotificationsNumber1);
+        controller.setMostLiked(gruppo.getMostLikedPost(getMonthFormat(mese)));
+        controller.setMostCommented(gruppo.getMostCommentedPost(getMonthFormat(mese)));
+        controller.setMinPostNum(gruppo.getMinimumSharedPostsNum(getMonthFormat(mese)));
+        controller.setAvgPostNum(gruppo.getAverageSharedPostsNum(getMonthFormat(mese)));
+        controller.initPage(mese);
     }
 
-    public void OnJanuaryButtonClick() throws IOException {}
+    public void OnJanuaryButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Gennaio");
+    }
 
-    public void OnFebruaryButtonClick() throws IOException {}
+    public void OnFebruaryButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Febbraio");
+    }
 
-    public void OnMarchButtonClick() throws IOException {}
+    public void OnMarchButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Marzo");
+    }
 
-    public void OnAprilButtonClick() throws IOException {}
+    public void OnAprilButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Aprile");
+    }
 
-    public void OnMayButtonClick() throws IOException {}
+    public void OnMayButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Maggio");
+    }
 
-    public void OnJuneButtonClick() throws IOException {}
+    public void OnJuneButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Giugno");
+    }
 
-    public void OnJulyButtonClick() throws IOException {}
+    public void OnJulyButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Luglio");
+    }
 
-    public void OnAugustButtonClick() throws IOException {}
+    public void OnAugustButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Agosto");
+    }
 
-    public void OnSeptemberButtonClick() throws IOException {}
+    public void OnSeptemberButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Settembre");
+    }
 
-    public void OnOctoberButtonClick() throws IOException {}
+    public void OnOctoberButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Ottobre");
+    }
 
-    public void OnNovemberButtonClick() throws IOException {}
+    public void OnNovemberButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Novembre");
+    }
 
-    public void OnDecemberButtonClick() throws IOException {}
+    public void OnDecemberButtonClick() throws IOException, SQLException {
+        SwitchToGroupStatsPageScene("Dicembre");
+    }
+
+    private String getMonthFormat(String mese) {
+        switch (mese) {
+            case "Gennaio":
+                return "01";
+            case "Febbraio":
+                return "02";
+            case "Marzo":
+                return "03";
+            case "Aprile":
+                return "04";
+            case "Maggio":
+                return "05";
+            case "Giugno":
+                return "06";
+            case "Luglio":
+                return "07";
+            case "Agosto":
+                return "08";
+            case "Settembre":
+                return "09";
+            case "Ottobre":
+                return "10";
+            case "Novembre":
+                return "11";
+            case "Dicembre":
+                return "12";
+        }
+        return "";
+    }
 
 
     public String getUtenteLoggato1() {
