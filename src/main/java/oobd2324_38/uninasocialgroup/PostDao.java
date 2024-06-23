@@ -14,6 +14,7 @@ public class PostDao {
             ps.setInt(2, post.getAutore().getIdUtente());
             ps.setInt(3, post.getInGruppo().getIdGruppo());
             ResultSet rs = ps.executeQuery();
+            DatabaseConnection.closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

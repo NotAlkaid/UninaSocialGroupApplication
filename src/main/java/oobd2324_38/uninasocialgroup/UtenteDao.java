@@ -83,6 +83,7 @@ public class UtenteDao {
                 DatabaseConnection.closeConnection();
                 return rs.getInt("ID_UTENTE");
             }
+            DatabaseConnection.closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -117,6 +118,7 @@ public class UtenteDao {
             ps.setInt(1, utente.getIdUtente());
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {return rs.getString("Username");}
+            DatabaseConnection.closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

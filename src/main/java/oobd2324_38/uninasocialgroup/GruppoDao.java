@@ -18,6 +18,7 @@ public class GruppoDao {
                 DatabaseConnection.closeConnection();
                 return rs.getString(1);
             }
+            DatabaseConnection.closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -61,6 +62,7 @@ public class GruppoDao {
                 post.setInGruppo(gruppo);
                 posts.add(post);
             }
+            DatabaseConnection.closeConnection();
             return posts;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -146,7 +148,10 @@ public class GruppoDao {
             ps.setInt(1, utente.getIdUtente());
             ps.setInt(2, gruppo.getIdGruppo());
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {return true;}
+            if (rs.next()) {
+                DatabaseConnection.closeConnection();
+                return true;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -172,6 +177,7 @@ public class GruppoDao {
                 post.setInGruppo(gruppo);
                 posts.add(post);
             }
+            DatabaseConnection.closeConnection();
             return posts;
         } catch (SQLException e) {
             throw new RuntimeException(e);

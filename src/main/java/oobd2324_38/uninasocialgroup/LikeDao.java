@@ -29,6 +29,7 @@ public class LikeDao {
             ps.setInt(1, utente.getIdUtente());
             ps.setInt(2, post.getIdPost());
             ResultSet rs = ps.executeQuery();
+            DatabaseConnection.closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

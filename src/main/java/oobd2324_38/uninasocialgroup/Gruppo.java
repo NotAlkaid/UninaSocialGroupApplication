@@ -1,5 +1,6 @@
 package oobd2324_38.uninasocialgroup;
 
+import java.sql.Array;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -106,12 +107,11 @@ public class Gruppo {
                 Post MaxPost = groupPosts.getFirst();
                 for(int i = 0; i < groupPosts.size(); i++) {
                     for(int j = i+1; j < groupPosts.size(); j++) {
-                        if(MaxPost.getLikes() < groupPosts.get(i).getLikes()) {
-                            MaxPost = groupPosts.get(i);
+                        if(MaxPost.getLikes() < groupPosts.get(j).getLikes()) {
+                            MaxPost = groupPosts.get(j);
                         }
                     }
                 }
-                if(MaxPost.getLikes() == 0) return null;
                 return MaxPost;
             }
         }
@@ -126,8 +126,8 @@ public class Gruppo {
                 Post MaxPost = groupPosts.getFirst();
                 for(int i = 0; i < groupPosts.size(); i++) {
                     for(int j = i+1; j < groupPosts.size(); j++) {
-                        if(MaxPost.getComments() < groupPosts.get(i).getComments()) {
-                            MaxPost = groupPosts.get(i);
+                        if(MaxPost.getComments() < groupPosts.get(j).getComments()) {
+                            MaxPost = groupPosts.get(j);
                         }
                     }
                 }
@@ -138,25 +138,65 @@ public class Gruppo {
         return null;
     }
 
-    public int getMinimumSharedPostsNum(String mese) throws SQLException {
+    public Post getLessLikedPost(String mese) throws SQLException {
         GruppoDao gruppoDao = new GruppoDao();
-        ArrayList<Post> groupPosts = gruppoDao.getPostsInMonth(this, mese);
-        if(groupPosts != null) {return 1;}
-        else {return 0;}
-    }
-
-    public int getAverageSharedPostsNum(String mese) throws SQLException {
-        GruppoDao gruppoDao = new GruppoDao();
-        int sum = 0;
-        int counter = 0;
         ArrayList<Post> groupPosts = gruppoDao.getPostsInMonth(this, mese);
         if(groupPosts != null) {
-            for(int i = 0; i < groupPosts.size(); i++) {
-                sum ++;
-                counter++;
+            if(!groupPosts.isEmpty()) {
+                Post MinPost = groupPosts.getFirst();
+                for(int i = 0; i < groupPosts.size(); i++) {
+                    for(int j = i+1; j < groupPosts.size(); j++) {
+                        if(MinPost.getLikes() > groupPosts.get(j).getLikes()) {
+                            MinPost = groupPosts.get(j);
+                        }
+                    }
+                }
+                return MinPost;
             }
-            return sum/counter;
         }
-        else {return 0;}
+        return null;
+    }
+
+    public Post getLessCommentedPost(String mese) throws SQLException {
+        GruppoDao gruppoDao = new GruppoDao();
+        ArrayList<Post> groupPosts = gruppoDao.getPostsInMonth(this, mese);
+        if(groupPosts != null) {
+            if(!groupPosts.isEmpty()) {
+                Post MinPost = groupPosts.getFirst();
+                for(int i = 0; i < groupPosts.size(); i++) {
+                    for(int j = i+1; j < groupPosts.size(); j++) {
+                        if(MinPost.getComments() < groupPosts.get(j).getComments()) {
+                            MinPost = groupPosts.get(j);
+                        }
+                    }
+                }
+                if(MinPost.getComments() == 0) return null;
+                return MinPost;
+            }
+        }
+        return null;
+    }
+
+    public static int getAverageSharedPosts(Utente utente) throws SQLException {
+        GruppoDao gruppoDao = new GruppoDao();
+        UtenteDao utenteDao = new UtenteDao();
+        ArrayList<Gruppo> AllGroups = utenteDao.getOwnedGroups(utente);
+        ArrayList<Post> AllPosts = new ArrayList<>();
+        int sum = 0;
+
+        if(AllGroups != null) {
+            if(!AllGroups.isEmpty()) {
+                for(int i = 0 ; i < AllGroups.size(); i++) {
+                    AllPosts.addAll(AllGroups.get(i).getAllPosts());
+                    for (int j = 0; j < AllPosts.size(); j++) {
+                        sum++;
+                    }
+                    AllPosts.clear();
+                }
+                System.out.println("SOMMA: " + sum + ", GRUPPI: " + AllGroups.size());
+                return sum / AllGroups.size();
+            }
+        }
+        return 0;
     }
 }

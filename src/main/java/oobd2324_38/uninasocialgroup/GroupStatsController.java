@@ -28,12 +28,14 @@ public class GroupStatsController {
     @FXML private Label MeseLabel;
     @FXML private Label MostLikedLabel;
     @FXML private Label MostCommentedLabel;
-    @FXML private Label MinPostLabel;
+    @FXML private Label LessLikedLabel;
+    @FXML private Label LessCommentedLabel;
     @FXML private Label AvgPostLabel;
-    private int MinPostNum;
     private int AvgPostNum;
     private Post MostLiked;
     private Post MostCommented;
+    private Post LessLiked;
+    private Post LessCommented;
     private Stage stage;
     private Parent root;
     private Scene scene;
@@ -60,8 +62,17 @@ public class GroupStatsController {
         } else {
             MostCommentedLabel.setText(" Non ci sono post che hanno avuto commenti");
         }
-        MinPostLabel.setText(String.valueOf(MinPostNum));
-        AvgPostLabel.setText(String.valueOf(AvgPostNum));
+        if(LessLiked != null) {
+            LessLikedLabel.setText(" " + LessLiked.getAutore().getUsername() + ": " + LessLiked.getTesto());
+        } else {
+            LessLikedLabel.setText(" Non ci sono post che hanno avuto likes");
+        }
+        if(LessCommented != null) {
+            LessCommentedLabel.setText(" " + LessCommented.getAutore().getUsername() + ": " + LessCommented.getTesto());
+        } else {
+            LessCommentedLabel.setText(" Non ci sono post che hanno avuto commenti");
+        }
+        AvgPostLabel.setText(" " + AvgPostNum);
     }
 
     public String getUtenteLoggato1() {
@@ -224,19 +235,27 @@ public class GroupStatsController {
         MostCommented = mostCommented;
     }
 
-    public int getMinPostNum() {
-        return MinPostNum;
-    }
-
-    public void setMinPostNum(int minPostNum) {
-        MinPostNum = minPostNum;
-    }
-
     public int getAvgPostNum() {
         return AvgPostNum;
     }
 
     public void setAvgPostNum(int avgPostNum) {
         AvgPostNum = avgPostNum;
+    }
+
+    public Post getLessLiked() {
+        return LessLiked;
+    }
+
+    public void setLessLiked(Post lessLiked) {
+        LessLiked = lessLiked;
+    }
+
+    public Post getLessCommented() {
+        return LessCommented;
+    }
+
+    public void setLessCommented(Post lessCommented) {
+        LessCommented = lessCommented;
     }
 }

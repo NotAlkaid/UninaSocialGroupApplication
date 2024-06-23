@@ -175,6 +175,9 @@ public class FunctionalReportController {
     }
 
     public void SwitchToGroupStatsPageScene(String mese) throws IOException, SQLException {
+        Utente utente = new Utente();
+        utente.setUsername(UtenteLoggato1);
+        utente.setIdUtente(utente.getIdByUsername());
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("GroupStatsPage.fxml"));
         root = loader.load();
@@ -188,8 +191,9 @@ public class FunctionalReportController {
         controller.setNotificationsNumber1(NotificationsNumber1);
         controller.setMostLiked(gruppo.getMostLikedPost(getMonthFormat(mese)));
         controller.setMostCommented(gruppo.getMostCommentedPost(getMonthFormat(mese)));
-        controller.setMinPostNum(gruppo.getMinimumSharedPostsNum(getMonthFormat(mese)));
-        controller.setAvgPostNum(gruppo.getAverageSharedPostsNum(getMonthFormat(mese)));
+        controller.setLessLiked(gruppo.getLessLikedPost(getMonthFormat(mese)));
+        controller.setLessCommented(gruppo.getLessCommentedPost(getMonthFormat(mese)));
+        controller.setAvgPostNum(Gruppo.getAverageSharedPosts(utente));
         controller.initPage(mese);
     }
 

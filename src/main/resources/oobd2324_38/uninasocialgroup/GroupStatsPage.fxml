@@ -68,7 +68,7 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@Style.css" BorderPane.alignment="CENTER_LEFT">
             <children>
-                <Label fx:id="MeseLabel" layoutX="14.0" layoutY="51.0" text="Nel mese di x:">
+                <Label fx:id="MeseLabel" layoutX="14.0" layoutY="14.0" text="Nel mese di x:">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
@@ -82,16 +82,17 @@
                         </GridPane>
                     </content>
                 </ScrollPane>
-            <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="119.0" prefHeight="288.0" prefWidth="767.0">
+            <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="67.0" prefHeight="427.0" prefWidth="767.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="379.20001220703125" minWidth="10.0" prefWidth="224.599951171875" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.7999877929688" minWidth="10.0" prefWidth="542.200048828125" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="141.5999725341797" minHeight="10.0" prefHeight="123.99998168945312" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="159.00001220703126" minHeight="10.0" prefHeight="116.00001831054688" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="93.40001220703124" minHeight="3.799978637695304" prefHeight="19.199975585937494" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="44.60002746582032" minHeight="10.0" prefHeight="18.39997558593751" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="269.0" minHeight="8.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="277.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="256.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="341.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="182.0" minHeight="10.0" prefHeight="5.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="154.0" text="Post che ha avuto piu' like">
@@ -104,20 +105,26 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="191.0" text="Numero minimo di post condivisi" GridPane.rowIndex="2">
+                  <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="162.0" text="Post che ha avuto meno like" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="182.0" text="Numero medio di post condivisi" GridPane.rowIndex="3">
+                  <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="198.0" text="Post che ha avuto meno commenti" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
                   <Label fx:id="MostLikedLabel" prefHeight="120.0" prefWidth="542.0" text=" Nome utente + contenuto" GridPane.columnIndex="1" />
                   <Label fx:id="MostCommentedLabel" prefHeight="114.0" prefWidth="543.0" text=" Nome utente + contenuto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="MinPostLabel" alignment="CENTER" prefHeight="18.0" prefWidth="22.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="AvgPostLabel" alignment="CENTER" prefHeight="18.0" prefWidth="22.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="LessLikedLabel" prefHeight="91.0" prefWidth="543.0" text=" Nome utente + contenuto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="LessCommentedLabel" prefHeight="91.0" prefWidth="542.0" text=" Nome utente + contenuto" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="183.0" text="Numero medio di post condivisi" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="AvgPostLabel" prefHeight="17.0" prefWidth="30.0" text=" 0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
             </children></AnchorPane>
