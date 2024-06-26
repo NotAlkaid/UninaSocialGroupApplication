@@ -67,15 +67,6 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@Style.css" BorderPane.alignment="CENTER_LEFT">
             <children>
-                <ScrollPane fx:id="NotificationsPane" layoutX="643.0" layoutY="-1.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
-                    <content>
-                        <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="271.0">
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                        </GridPane>
-                    </content>
-                </ScrollPane>
             <TextField fx:id="NomeGruppoField" layoutX="339.0" layoutY="100.0" prefHeight="26.0" prefWidth="254.0" promptText="Inserisci un nome" styleClass="LoginTextFields" stylesheets="@Style.css" />
             <TextField fx:id="TemaGruppoField" layoutX="339.0" layoutY="147.0" prefHeight="26.0" prefWidth="254.0" promptText="Inserisci un tema" styleClass="LoginTextFields" stylesheets="@Style.css" />
             <Label layoutX="310.0" layoutY="14.0" text="CREA UN GRUPPO">
@@ -96,6 +87,15 @@
             <Label fx:id="NomeGruppoVuotoLabel" layoutX="409.0" layoutY="68.0" text="Nome gruppo vuoto!" textFill="RED" visible="false" />
             <Label fx:id="TemaVuotoLabel" layoutX="402.0" layoutY="68.0" text="Tema del gruppo vuoto!" textFill="RED" visible="false" />
             <Label fx:id="NameEqualsThemeLabel" layoutX="369.0" layoutY="68.0" text="Nome e tema devono essere diversi!" textFill="RED" visible="false" />
+                <ScrollPane fx:id="NotificationsPane" layoutX="539.0" layoutY="-1.0" opacity="0.8" prefHeight="230.0" prefWidth="382.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
+                    <content>
+                        <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="385.0">
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                        </GridPane>
+                    </content>
+                </ScrollPane>
             </children></AnchorPane>
     </center>
     <left>

@@ -73,15 +73,6 @@
                         <Font name="System Bold" size="36.0" />
                     </font>
                 </Label>
-                <ScrollPane fx:id="NotificationsPane" layoutX="643.0" layoutY="-1.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
-                    <content>
-                        <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="271.0">
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                        </GridPane>
-                    </content>
-                </ScrollPane>
             <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="67.0" prefHeight="427.0" prefWidth="767.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="379.20001220703125" minWidth="10.0" prefWidth="224.599951171875" />
@@ -127,6 +118,15 @@
                   <Label fx:id="AvgPostLabel" prefHeight="17.0" prefWidth="30.0" text=" 0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
+                <ScrollPane fx:id="NotificationsPane" layoutX="539.0" layoutY="-1.0" opacity="0.8" prefHeight="230.0" prefWidth="382.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
+                    <content>
+                        <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="385.0">
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                        </GridPane>
+                    </content>
+                </ScrollPane>
             </children></AnchorPane>
     </center>
     <left>

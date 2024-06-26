@@ -112,15 +112,15 @@
                   <FontAwesomeIcon glyphName="PLUS" size="3em" styleClass="CreatePostButton" textAlignment="RIGHT" wrappingWidth="33.285715103149414" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <ScrollPane fx:id="NotificationsPane" layoutX="625.0" opacity="0.8" prefHeight="229.0" prefWidth="277.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
-               <content>
-                  <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="271.0">
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                  </GridPane>
-               </content>
-            </ScrollPane>
+             <ScrollPane fx:id="NotificationsPane" layoutX="539.0" layoutY="-1.0" opacity="0.8" prefHeight="230.0" prefWidth="382.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">
+                 <content>
+                     <GridPane fx:id="NotificationsGrid" prefHeight="16.0" prefWidth="385.0">
+                         <rowConstraints>
+                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                         </rowConstraints>
+                     </GridPane>
+                 </content>
+             </ScrollPane>
          </children></AnchorPane>
     </center>
     <left>

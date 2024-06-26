@@ -27,6 +27,7 @@ public class CreaPostController {
     @FXML private Label NotificationsNumberLabel;
     @FXML private TextArea PostField;
     @FXML private Label CampoVuotoLabel;
+    @FXML private TextField HomeSearchBar;
 
 
     public void initPage() {
@@ -43,27 +44,12 @@ public class CreaPostController {
 
 
     public void OnNotificationButtonClick() {
-        if(!NotificationsPane.isVisible()) {
-            Utente utente = new Utente();
-            utente.setUsername(UtenteLoggato);
-            utente.setIdUtente(utente.getIdByUsername());
-            ArrayList<String> NotificationsList = utente.getAllNotifications();
-            if(NotificationsList != null) {
-                NotificationsPane.setVisible(true);
-                int rows = 1;
-                for(int i = 0; i < NotificationsList.size(); i++) {
-                    Label Notification = new Label();
-                    Notification.setText(NotificationsList.get(i));
-                    Separator separator = new Separator();
-                    separator.setOrientation(Orientation.HORIZONTAL);
-                    NotificationsGrid.add(Notification, 0, rows);
-                    GridPane.setMargin(Notification, new Insets(10, 10, 10, 10));
-                    rows++;
-                    NotificationsGrid.add(separator, 0, rows);
-                    rows++;
-                }
-            }
-        } else {NotificationsPane.setVisible(false);}
+        SceneController sc = new SceneController();
+        sc.setNotificationsGrid(this.NotificationsGrid);
+        sc.setNotificationsPane(this.NotificationsPane);
+        sc.setNotificationsGrid(this.NotificationsGrid);
+        sc.setUtenteLoggato(this.UtenteLoggato);
+        sc.NotificationAction();
     }
 
     public void SwitchToLoginScene() throws IOException {
@@ -216,5 +202,13 @@ public class CreaPostController {
 
     public void OnMenuReportButtonClick() throws IOException {
         SwitchToReportScene();
+    }
+
+    public void OnLensClicked() throws IOException {
+        SceneController sc = new SceneController();
+        sc.setUtenteLoggato(this.UtenteLoggato);
+        sc.setNotificationsNumber(String.valueOf(this.NotificationsNumber));
+        sc.setHomeSearchBar(this.HomeSearchBar);
+        sc.LensAction();
     }
 }

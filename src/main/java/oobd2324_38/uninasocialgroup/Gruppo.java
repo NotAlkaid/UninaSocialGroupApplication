@@ -177,7 +177,7 @@ public class Gruppo {
         return null;
     }
 
-    public static int getAverageSharedPosts(Utente utente) throws SQLException {
+    public static int getAverageSharedPosts(Utente utente, String mese) throws SQLException {
         GruppoDao gruppoDao = new GruppoDao();
         UtenteDao utenteDao = new UtenteDao();
         ArrayList<Gruppo> AllGroups = utenteDao.getOwnedGroups(utente);
@@ -186,8 +186,9 @@ public class Gruppo {
 
         if(AllGroups != null) {
             if(!AllGroups.isEmpty()) {
+                GruppoDao groupDao = new GruppoDao();
                 for(int i = 0 ; i < AllGroups.size(); i++) {
-                    AllPosts.addAll(AllGroups.get(i).getAllPosts());
+                    AllPosts.addAll(gruppoDao.getPostsInMonth(AllGroups.get(i), mese));
                     for (int j = 0; j < AllPosts.size(); j++) {
                         sum++;
                     }

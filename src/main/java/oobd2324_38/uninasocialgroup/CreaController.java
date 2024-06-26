@@ -77,27 +77,12 @@ public class CreaController {
     }
 
     public void OnNotificationButtonClick() {
-        if(!NotificationsPane.isVisible()) {
-            Utente utente = new Utente();
-            utente.setUsername(UtenteLoggato);
-            utente.setIdUtente(utente.getIdByUsername());
-            ArrayList<String> NotificationsList = utente.getAllNotifications();
-            if(NotificationsList != null) {
-                NotificationsPane.setVisible(true);
-                int rows = 1;
-                for(int i = 0; i < NotificationsList.size(); i++) {
-                    Label Notification = new Label();
-                    Notification.setText(NotificationsList.get(i));
-                    Separator separator = new Separator();
-                    separator.setOrientation(Orientation.HORIZONTAL);
-                    NotificationsGrid.add(Notification, 0, rows);
-                    GridPane.setMargin(Notification, new Insets(10, 10, 10, 10));
-                    rows++;
-                    NotificationsGrid.add(separator, 0, rows);
-                    rows++;
-                }
-            }
-        } else {NotificationsPane.setVisible(false);}
+        SceneController sc = new SceneController();
+        sc.setNotificationsGrid(this.NotificationsGrid);
+        sc.setNotificationsPane(this.NotificationsPane);
+        sc.setNotificationsGrid(this.NotificationsGrid);
+        sc.setUtenteLoggato(this.UtenteLoggato);
+        sc.NotificationAction();
     }
 
     public void SwitchToLoginScene() throws IOException {
@@ -150,22 +135,11 @@ public class CreaController {
     }
 
     public void OnLensClicked() throws IOException {
-        Utente utente = new Utente();
-        utente.setUsername(UtenteLoggato);
-        utente.setIdUtente(utente.getIdByUsername());
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("SearchGroupPage.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        SearchGroupController controller = loader.getController();
-        controller.setUtenteLoggato(UtenteLoggato);
-        controller.setNotificationsNumber1(String.valueOf(NotificationsNumber));
-        controller.setIdUtente(utente.getIdUtente());
-        controller.InitPage(HomeSearchBar.getText(), utente.getIdUtente());
+        SceneController sc = new SceneController();
+        sc.setUtenteLoggato(this.UtenteLoggato);
+        sc.setNotificationsNumber(String.valueOf(this.NotificationsNumber));
+        sc.setHomeSearchBar(this.HomeSearchBar);
+        sc.LensAction();
     }
 
     public void SwitchToRichiesteScene() throws IOException {
