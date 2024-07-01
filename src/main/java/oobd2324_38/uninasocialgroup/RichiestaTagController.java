@@ -22,29 +22,20 @@ public class RichiestaTagController {
         MessageLabel.setText(messaggio.toString());
     }
 
-    private void RefreshPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("RichiesteAccesso.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        RichiesteAccessoController controller = loader.getController();
-        controller.setUtenteLoggato1(UtenteLoggato);
-        controller.setNotificationsNumber1(Integer.parseInt(NotificationsNumber));
-        controller.InitPage();
-    }
-
     public void OnAcceptButtonClick() throws IOException {
         richiesta.accettaRichiesta();
-        RefreshPage();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato);
+        sceneController.setNotificationsNumber(this.NotificationsNumber);
+        sceneController.RefreshPage();
     }
 
     public void OnRejectButtonClick() throws IOException {
         richiesta.rifiutaRichiesta();
-        RefreshPage();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato);
+        sceneController.setNotificationsNumber(this.NotificationsNumber);
+        sceneController.RefreshPage();
     }
 
     public Richiesta getRichiesta() {

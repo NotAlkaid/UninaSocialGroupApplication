@@ -52,46 +52,21 @@ public class GruppoController {
         return gruppo.GetTemi();
     }
 
-    public void SwitchToGroupPageScene() throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("GroupPage.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        GroupPageController controller = loader.getController();
-        controller.setUtenteLoggato1(UtenteLoggato);
-        controller.setNotificationsNumber1(NotificationsNumber);
-        controller.setIdGruppo(IdGruppo);
-        controller.initPage();
-    }
-
-    public void SwitchToFunctionalReportScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("FunctionalReport.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        FunctionalReportController controller = loader.getController();
-        controller.setUtenteLoggato1(UtenteLoggato);
-        controller.setNotificationsNumber1(String.valueOf(NotificationsNumber));
-        Gruppo gruppo = new Gruppo();
-        gruppo.setIdGruppo(IdGruppo);
-        gruppo.setNome(NomeGruppo.getText());
-        controller.setGruppo(gruppo);
-        controller.initPage();
-    }
-
     public void OnGroupTagClicked() throws IOException, SQLException {
         if(this.SwitchFrom.equals("FunctionalReport")) {
-            SwitchToFunctionalReportScene();
+            SceneController sceneController = new SceneController();
+            sceneController.setUtenteLoggato(this.UtenteLoggato);
+            sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber));
+            sceneController.setIdGruppo(this.IdGruppo);
+            sceneController.setNomeGruppo(this.NomeGruppo);
+            sceneController.SwitchToFunctionalReportScene();
         } else {
-            SwitchToGroupPageScene();
+            SceneController sceneController = new SceneController();
+            sceneController.setUtenteLoggato(this.UtenteLoggato);
+            sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber));
+            sceneController.setIdGruppo(this.IdGruppo);
+            sceneController.setNomeGruppo(this.NomeGruppo);
+            sceneController.SwitchToGroupPageScene();
         }
     }
 

@@ -21,19 +21,19 @@
     <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label fx:id="NomeUtenteLabel" alignment="CENTER" prefHeight="20.0" prefWidth="558.0" text="Nome utente" GridPane.columnIndex="1">
+      <Label fx:id="NomeUtenteLabel" alignment="CENTER" prefHeight="20.0" prefWidth="558.0" GridPane.columnIndex="1">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="CommentButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="47.0" style="-fx-background-color: transparent;" styleClass="LikeCommentButton" stylesheets="@Style.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Button fx:id="CommentButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="47.0" style="-fx-background-color: transparent;" styleClass="LikeCommentButton" stylesheets="@Style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <graphic>
             <FontAwesomeIcon fx:id="FontComment" glyphName="COMMENT" size="2.4em" textAlignment="RIGHT" wrappingWidth="31.799999237060547" />
          </graphic>
       </Button>
       <TextArea fx:id="PostContentArea" editable="false" prefHeight="95.0" prefWidth="308.0" style="-fx-border-color: transparent; -fx-background-color: transparent;" wrapText="true" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-      <Label fx:id="DateLabel" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="182.0" text="00/00/0000" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Button fx:id="LikeButton" mnemonicParsing="false" onAction="#onLikeButtonClick" prefHeight="37.0" prefWidth="14.0" style="-fx-background-color: transparent;" styleClass="LikeCommentButton" stylesheets="@Style.css" text="0" GridPane.rowIndex="2">
+      <Label fx:id="DateLabel" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="182.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Button fx:id="LikeButton" mnemonicParsing="false" onAction="#onLikeButtonClick" prefHeight="37.0" prefWidth="14.0" style="-fx-background-color: transparent;" styleClass="LikeCommentButton" stylesheets="@Style.css" GridPane.rowIndex="2">
          <graphic>
             <FontAwesomeIcon fx:id="FontLike" glyphName="THUMBS_UP" size="2.4em" styleClass="LikeIcon" wrappingWidth="29.742856979370117" />
          </graphic>

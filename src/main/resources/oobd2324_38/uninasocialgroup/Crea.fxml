@@ -39,7 +39,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label fx:id="UtenteLoggatoLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="20.0" prefWidth="399.0" text="Nome utente loggato" textFill="WHITE">
+                        <Label fx:id="UtenteLoggatoLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="20.0" prefWidth="399.0" textFill="WHITE">
                             <font>
                                 <Font name="System Bold Italic" size="14.0" />
                             </font>

@@ -37,7 +37,7 @@
          </font>
       </Button>
       <PasswordField fx:id="setPasswordField" layoutX="484.0" layoutY="201.0" onKeyPressed="#LogInOnEnter" prefHeight="26.0" prefWidth="150.0" promptText="Inserisci una password" styleClass="LoginTextFields" stylesheets="@Style.css" />
-      <ToggleButton id="RegisterText" layoutX="538.0" layoutY="345.0" mnemonicParsing="false" onAction="#SwitchToSignInScene" style="-fx-background-color: #ffffff; -fx-text-fill: #58afff;" styleClass="RegisterText" stylesheets="@Style.css" text="Clicca qui per registrarti" />
+      <ToggleButton id="RegisterText" layoutX="538.0" layoutY="345.0" mnemonicParsing="false" onAction="#onSignInClicked" style="-fx-background-color: #ffffff; -fx-text-fill: #58afff;" styleClass="RegisterText" stylesheets="@Style.css" text="Clicca qui per registrarti" />
       <CheckBox fx:id="MostraPwdCheck" layoutX="495.0" layoutY="241.0" mnemonicParsing="false" onAction="#MostraPasswordOnAction" styleClass="MostraPwdCheckBox" stylesheets="@Style.css" text="Mostra Password" />
       <TextField fx:id="setPasswordClearField" layoutX="484.0" layoutY="201.0" onKeyPressed="#LogInOnEnter" prefHeight="26.0" prefWidth="150.0" promptText="Inserisci una password" styleClass="LoginTextFields" stylesheets="@Style.css" visible="false" />
       <Label fx:id="InvalidCredentialsLabel" layoutX="459.0" layoutY="131.0" text="Username o Password non corretti!" textFill="#fa5050" visible="false" />

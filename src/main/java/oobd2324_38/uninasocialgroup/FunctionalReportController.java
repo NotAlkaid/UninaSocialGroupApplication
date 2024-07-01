@@ -42,19 +42,9 @@ public class FunctionalReportController {
         }
     }
 
-    public void SwitchToLoginScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Login.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-    }
-
     public void LogOutOnClick() throws IOException {
-        SwitchToLoginScene();
+        SceneController sceneController = new SceneController();
+        sceneController.SwitchToLoginScene();
     }
 
     public void OnNotificationButtonClick() {
@@ -66,23 +56,11 @@ public class FunctionalReportController {
         sc.NotificationAction();
     }
 
-    public void SwitchToCreaScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Crea.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        CreaController controller = loader.getController();
-        controller.setUtenteLoggato(UtenteLoggato.getText());
-        controller.setNotificationsNumber(Integer.parseInt(NotificationsNumber.getText()));
-        controller.InitPage();
-    }
-
     public void OnCreaButtonClick() throws IOException {
-        SwitchToCreaScene();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.SwitchToCreaScene();
     }
 
     public void OnLensClicked() throws IOException {
@@ -93,162 +71,121 @@ public class FunctionalReportController {
         sc.LensAction();
     }
 
-    public void SwitchToRichiesteScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("RichiesteAccesso.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        RichiesteAccessoController controller = loader.getController();
-        controller.setUtenteLoggato1(UtenteLoggato.getText());
-        controller.setNotificationsNumber1(Integer.parseInt(NotificationsNumber.getText()));
-        controller.InitPage();
-    }
-
     public void OnMenuRequestButtonClick() throws IOException {
-        SwitchToRichiesteScene();
-    }
-
-    public void SwitchToReportScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("ReportPage.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        ReportController controller = loader.getController();
-        controller.setUtenteLoggato1(UtenteLoggato.getText());
-        controller.setNotificationsNumber(NotificationsNumber.getText());
-        controller.initPage();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.SwitchToRichiesteScene();
     }
 
     public void OnMenuReportButtonClick() throws IOException {
-        SwitchToReportScene();
-    }
-
-    public void SwitchToHomePageScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Home.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        HomeController controller  = loader.getController();
-        controller.InitPage(UtenteLoggato.getText());
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.SwitchToReportScene();
     }
 
     public void OnHomeButtonClick() throws IOException {
-        SwitchToHomePageScene();
-    }
-
-    public void SwitchToGroupStatsPageScene(String mese) throws IOException, SQLException {
-        Utente utente = new Utente();
-        utente.setUsername(UtenteLoggato1);
-        utente.setIdUtente(utente.getIdByUsername());
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("GroupStatsPage.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        GroupStatsController controller = loader.getController();
-        controller.setUtenteLoggato1(UtenteLoggato1);
-        controller.setNotificationsNumber1(NotificationsNumber1);
-        controller.setMostLiked(gruppo.getMostLikedPost(getMonthFormat(mese)));
-        controller.setMostCommented(gruppo.getMostCommentedPost(getMonthFormat(mese)));
-        controller.setLessLiked(gruppo.getLessLikedPost(getMonthFormat(mese)));
-        controller.setLessCommented(gruppo.getLessCommentedPost(getMonthFormat(mese)));
-        controller.setAvgPostNum(Gruppo.getAverageSharedPosts(utente, getMonthFormat(mese)));
-        controller.initPage(mese);
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.SwitchToHomeScene();
     }
 
     public void OnJanuaryButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Gennaio");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Gennaio");
     }
 
     public void OnFebruaryButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Febbraio");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Febbraio");
     }
 
     public void OnMarchButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Marzo");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Marzo");
     }
 
     public void OnAprilButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Aprile");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Aprile");
     }
 
     public void OnMayButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Maggio");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Maggio");
     }
 
     public void OnJuneButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Giugno");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Giugno");
     }
 
     public void OnJulyButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Luglio");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Luglio");
     }
 
     public void OnAugustButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Agosto");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Agosto");
     }
 
     public void OnSeptemberButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Settembre");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Settembre");
     }
 
     public void OnOctoberButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Ottobre");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Ottobre");
     }
 
     public void OnNovemberButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Novembre");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Novembre");
     }
 
     public void OnDecemberButtonClick() throws IOException, SQLException {
-        SwitchToGroupStatsPageScene("Dicembre");
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato.getText());
+        sceneController.setNotificationsNumber(this.NotificationsNumber.getText());
+        sceneController.setGruppo(this.gruppo);
+        sceneController.SwitchToGroupStatsPageScene("Dicembre");
     }
-
-    private String getMonthFormat(String mese) {
-        switch (mese) {
-            case "Gennaio":
-                return "01";
-            case "Febbraio":
-                return "02";
-            case "Marzo":
-                return "03";
-            case "Aprile":
-                return "04";
-            case "Maggio":
-                return "05";
-            case "Giugno":
-                return "06";
-            case "Luglio":
-                return "07";
-            case "Agosto":
-                return "08";
-            case "Settembre":
-                return "09";
-            case "Ottobre":
-                return "10";
-            case "Novembre":
-                return "11";
-            case "Dicembre":
-                return "12";
-        }
-        return "";
-    }
-
 
     public String getUtenteLoggato1() {
         return UtenteLoggato1;

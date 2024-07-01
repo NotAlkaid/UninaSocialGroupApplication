@@ -71,19 +71,9 @@ public class ReportController {
         }
     }
 
-    public void SwitchToLoginScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Login.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-    }
-
     public void LogOutOnClick() throws IOException {
-        SwitchToLoginScene();
+        SceneController sceneController = new SceneController();
+        sceneController.SwitchToLoginScene();
     }
 
     public void OnNotificationButtonClick() {
@@ -95,23 +85,11 @@ public class ReportController {
         sc.NotificationAction();
     }
 
-    public void SwitchToCreaScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Crea.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        CreaController controller = loader.getController();
-        controller.setUtenteLoggato(UtenteLoggato.getText());
-        controller.setNotificationsNumber(Integer.parseInt(NotificationsNumber.getText()));
-        controller.InitPage();
-    }
-
     public void OnCreaButtonClick() throws IOException {
-        SwitchToCreaScene();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato1);
+        sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber.getText()));
+        sceneController.SwitchToCreaScene();
     }
 
     public void OnLensClicked() throws IOException {
@@ -122,40 +100,17 @@ public class ReportController {
         sc.LensAction();
     }
 
-    public void SwitchToRichiesteScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("RichiesteAccesso.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        RichiesteAccessoController controller = loader.getController();
-        controller.setUtenteLoggato1(UtenteLoggato.getText());
-        controller.setNotificationsNumber1(Integer.parseInt(NotificationsNumber.getText()));
-        controller.InitPage();
-    }
-
     public void OnMenuRequestButtonClick() throws IOException {
-        SwitchToRichiesteScene();
-    }
-
-    public void SwitchToHomePageScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Home.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        HomeController controller  = loader.getController();
-        controller.InitPage(UtenteLoggato.getText());
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato1);
+        sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber.getText()));
+        sceneController.SwitchToRichiesteScene();
     }
 
     public void OnHomeButtonClick() throws IOException {
-        SwitchToHomePageScene();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato1);
+        sceneController.SwitchToHomeScene();
     }
 
     public String getUtenteLoggato1() {

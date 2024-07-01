@@ -57,26 +57,9 @@ public class LoginController {
         }
     }
 
-    public void SwitchToSignInScene() throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Register.fxml"));
-        stage = Main.stage;
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-    }
-
-    public void SwitchToHomeScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Home.fxml"));
-        stage = Main.stage;
-        root = loader.load();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        HomeController controller = loader.getController();
-        controller.InitPage(setUsernameField.getText());
+    public void onSignInClicked() throws IOException {
+        SceneController sceneController = new SceneController();
+        sceneController.SwitchToSignInScene();
     }
 
     public void setLoginCredentialsAfterSignIn(String username, String password) {
@@ -92,8 +75,10 @@ public class LoginController {
                 LogInSuccessLabel.setVisible(false);
             } else {
                 Utente utente = new Utente();
-                if(utente.LoginVerification(setUsernameField.getText(), setPasswordClearField.getText()) != null) { //Qui dovro' gestire lo switch page passando l'utente per parametro
-                    SwitchToHomeScene();
+                if(utente.LoginVerification(setUsernameField.getText(), setPasswordClearField.getText()) != null) {
+                    SceneController sceneController = new SceneController();
+                    sceneController.setUtenteLoggato(this.setUsernameField.getText());
+                    sceneController.SwitchToHomeScene();
                 } else {
                     EmptyFieldsLabel.setVisible(false);
                     InvalidCredentialsLabel.setVisible(true);
@@ -108,7 +93,9 @@ public class LoginController {
             } else {
                 Utente utente = new Utente();
                 if(utente.LoginVerification(setUsernameField.getText(), setPasswordField.getText()) != null) {
-                    SwitchToHomeScene();
+                    SceneController sceneController = new SceneController();
+                    sceneController.setUtenteLoggato(this.setUsernameField.getText());
+                    sceneController.SwitchToHomeScene();
                 } else {
                     EmptyFieldsLabel.setVisible(false);
                     InvalidCredentialsLabel.setVisible(true);

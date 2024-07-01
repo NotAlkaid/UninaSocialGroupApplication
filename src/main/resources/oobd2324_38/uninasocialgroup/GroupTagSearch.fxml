@@ -20,14 +20,14 @@
     </rowConstraints>
     <children>
         <FontAwesomeIcon fx:id="TagIcon" glyphName="GROUP" size="4em" textAlignment="RIGHT" wrappingWidth="57.82853317260742" GridPane.rowIndex="1" />
-        <Label fx:id="TemiLabel" prefHeight="17.0" prefWidth="183.0" text="Temi" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Label fx:id="TemiLabel" prefHeight="17.0" prefWidth="183.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <font>
                 <Font name="System Italic" size="12.0" />
             </font>
         </Label>
         <Button fx:id="NomeGruppoButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Button" GridPane.columnIndex="1">
             <graphic>
-                <Label fx:id="NomeGruppo" prefHeight="27.0" prefWidth="173.0" text="Nome Gruppo">
+                <Label fx:id="NomeGruppo" prefHeight="27.0" prefWidth="173.0">
                     <font>
                         <Font name="System Bold Italic" size="18.0" />
                     </font>

@@ -35,7 +35,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label fx:id="UtenteLoggato" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="20.0" prefWidth="399.0" text="Nome utente loggato" textFill="WHITE">
+                        <Label fx:id="UtenteLoggato" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="20.0" prefWidth="399.0" textFill="WHITE">
                             <font>
                                 <Font name="System Bold Italic" size="14.0" />
                             </font>
@@ -68,7 +68,7 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@Style.css" BorderPane.alignment="CENTER_LEFT">
             <children>
-                <Label fx:id="MeseLabel" layoutX="14.0" layoutY="14.0" text="Nel mese di x:">
+                <Label fx:id="MeseLabel" layoutX="14.0" layoutY="14.0">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
@@ -106,16 +106,16 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="MostLikedLabel" prefHeight="120.0" prefWidth="542.0" text=" Nome utente + contenuto" GridPane.columnIndex="1" />
-                  <Label fx:id="MostCommentedLabel" prefHeight="114.0" prefWidth="543.0" text=" Nome utente + contenuto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="LessLikedLabel" prefHeight="91.0" prefWidth="543.0" text=" Nome utente + contenuto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="LessCommentedLabel" prefHeight="91.0" prefWidth="542.0" text=" Nome utente + contenuto" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="MostLikedLabel" prefHeight="120.0" prefWidth="542.0" GridPane.columnIndex="1" />
+                  <Label fx:id="MostCommentedLabel" prefHeight="114.0" prefWidth="543.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="LessLikedLabel" prefHeight="91.0" prefWidth="543.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="LessCommentedLabel" prefHeight="91.0" prefWidth="542.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="183.0" text="Numero medio di post condivisi" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="AvgPostLabel" prefHeight="17.0" prefWidth="30.0" text=" 0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="AvgPostLabel" prefHeight="17.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
                 <ScrollPane fx:id="NotificationsPane" layoutX="539.0" layoutY="-1.0" opacity="0.8" prefHeight="230.0" prefWidth="382.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" visible="false">

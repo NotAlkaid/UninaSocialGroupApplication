@@ -112,23 +112,11 @@ public class PostController {
         Utenteloggato = utenteloggato;
     }
 
-    public void SwitchToGroupPageScene() throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("GroupPage.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        GroupPageController controller = loader.getController();
-        controller.setUtenteLoggato1(this.Utenteloggato);
-        controller.setNotificationsNumber1(this.NotificationsNumber);
-        controller.setIdGruppo(this.idGruppo);
-        controller.initPage();
-    }
-
     public void Refresh() throws SQLException, IOException {
-        SwitchToGroupPageScene();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.Utenteloggato);
+        sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber));
+        sceneController.setIdGruppo(this.idGruppo);
+        sceneController.SwitchToGroupPageScene();
     }
 }

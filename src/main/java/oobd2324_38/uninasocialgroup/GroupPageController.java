@@ -40,7 +40,6 @@ public class GroupPageController {
         Utente utente = new Utente();
         utente.setUsername(UtenteLoggato1);
         utente.setIdUtente(utente.getIdByUsername());
-        ArrayList<Gruppo> GruppiUtente = utente.getGruppi();
         ArrayList<Post> allPosts = gruppo.getAllPosts();
 
         NomeGruppoLabel.setText(gruppo.getNomeById(gruppo.getIdGruppo()));
@@ -75,21 +74,10 @@ public class GroupPageController {
         }
     }
 
-    public void SwitchToHomePageScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Home.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        HomeController controller  = loader.getController();
-        controller.InitPage(UtenteLoggato.getText());
-    }
-
     public void OnGoBackButtonClicked() throws IOException {
-        SwitchToHomePageScene();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato1);
+        sceneController.SwitchToHomeScene();
     }
 
     public String getUtenteLoggato1() {
@@ -116,19 +104,9 @@ public class GroupPageController {
         this.idGruppo = idGruppo;
     }
 
-    public void SwitchToLoginScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Login.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-    }
-
     public void LogOutOnClick() throws IOException {
-        SwitchToLoginScene();
+        SceneController sceneController = new SceneController();
+        sceneController.SwitchToLoginScene();
     }
 
     public void OnNotificationButtonClick() {
@@ -140,85 +118,38 @@ public class GroupPageController {
         sc.NotificationAction();
     }
 
-    public void SwitchToCreaPost() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("CreaPost.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        CreaPostController controller = loader.getController();
-        controller.setUtenteLoggato(UtenteLoggato1);
-        controller.setNotificationsNumber(NotificationsNumber1);
-        controller.setIdGruppo(idGruppo);
-        controller.initPage();
-    }
-
     public void OnCreaPostButtonClick() throws IOException {
-        SwitchToCreaPost();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato1);
+        sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber1));
+        sceneController.SwitchToCreaPost();
     }
 
     public void OnHomeButtonClick() throws IOException {
-        SwitchToHomePageScene();
-    }
-
-    public void SwitchToCreaScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Crea.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        CreaController controller = loader.getController();
-        controller.setUtenteLoggato(UtenteLoggato.getText());
-        controller.setNotificationsNumber(Integer.parseInt(NotificationsNumber.getText()));
-        controller.InitPage();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato1);
+        sceneController.SwitchToHomeScene();
     }
 
     public void OnCreaButtonClick() throws IOException {
-        SwitchToCreaScene();
-    }
-
-    public void SwitchToRichiesteScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("RichiesteAccesso.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        RichiesteAccessoController controller = loader.getController();
-        controller.setUtenteLoggato1(UtenteLoggato.getText());
-        controller.setNotificationsNumber1(Integer.parseInt(NotificationsNumber.getText()));
-        controller.InitPage();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato1);
+        sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber1));
+        sceneController.SwitchToCreaScene();
     }
 
     public void OnMenuRequestButtonClick() throws IOException {
-        SwitchToRichiesteScene();
-    }
-
-    public void SwitchToReportScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("ReportPage.fxml"));
-        root = loader.load();
-        scene = new Scene(root);
-        stage = Main.stage;
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        ReportController controller = loader.getController();
-        controller.setUtenteLoggato1(UtenteLoggato.getText());
-        controller.setNotificationsNumber(NotificationsNumber.getText());
-        controller.initPage();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato1);
+        sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber1));
+        sceneController.SwitchToRichiesteScene();
     }
 
     public void OnMenuReportButtonClick() throws IOException {
-        SwitchToReportScene();
+        SceneController sceneController = new SceneController();
+        sceneController.setUtenteLoggato(this.UtenteLoggato1);
+        sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber1));
+        sceneController.SwitchToReportScene();
     }
 
     public void OnLensClicked() throws IOException {

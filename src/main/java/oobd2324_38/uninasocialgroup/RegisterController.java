@@ -60,28 +60,6 @@ public class RegisterController implements Initializable {
         SignInChoiceBox.getItems().addAll(Sesso.Maschio, Sesso.Femmina, Sesso.Altro);
     }
 
-    public void SwitchToLoginScene() throws IOException {
-        root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        stage = Main.stage;
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-    }
-
-    public void SwitchToLoginSceneWithCreds() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Login.fxml"));
-        root = loader.load();
-        stage = Main.stage;
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setResizable(false);
-        LoginController controller = loader.getController();
-        controller.setLoginCredentialsAfterSignIn(SignInUsernameField.getText(), SignInPwdField.getText());
-    }
-
     public void SignInButtonClicked() throws IOException {
         if(SignInUsernameField.getText().isEmpty()) {
             NomeVuotoLabel.setVisible(false);
@@ -145,7 +123,12 @@ public class RegisterController implements Initializable {
                     Utente newUtente = new Utente(SignInUsernameField.getText(), SignInPwdField.getText(), SignInNameField.getText(), SignInSurnameField.getText(),
                             SignInPhoneField.getText(), SignInBiografia.getText(), SignInDatePicker.getValue(), Sesso.valueOf(String.valueOf(SignInChoiceBox.getValue())));
                     try{
-                        if(newUtente.InsertnewUser()) this.SwitchToLoginSceneWithCreds();
+                        if(newUtente.InsertnewUser()) {
+                            SceneController sceneController = new SceneController();
+                            sceneController.setSignInUsernameField(this.SignInUsernameField);
+                            sceneController.setSignInPwdField(this.SignInPwdField);
+                            sceneController.SwitchToLoginSceneWithCreds();
+                        }
                     }catch(SQLException e){
                         if(e.getErrorCode() == 0) {
                             NomeVuotoLabel.setVisible(false);
@@ -171,6 +154,11 @@ public class RegisterController implements Initializable {
                 NumberNotValidLabel.setVisible(true);
             }
         }
+    }
+
+    public void onLogInClicked() throws IOException {
+        SceneController sceneController = new SceneController();
+        sceneController.SwitchToLoginScene();
     }
 
     private boolean CheckPhoneNumber(String number) {
