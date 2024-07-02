@@ -33,6 +33,7 @@ public class GruppoController {
         NomeGruppo.setText(gruppo.getNomeById(gruppo.getIdGruppo()));
         TagIcon.fillProperty().setValue(Paint.valueOf(GetRandomColor()));
         TemiLabel.setText(getTemi(gruppo));
+        this.IdGruppo = gruppo.getIdGruppo();
     }
 
     private String GetRandomColor() {
@@ -59,6 +60,7 @@ public class GruppoController {
             sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber));
             sceneController.setIdGruppo(this.IdGruppo);
             sceneController.setNomeGruppo(this.NomeGruppo);
+            System.out.println("OnGroupTagCliked id: " + this.IdGruppo);
             sceneController.SwitchToFunctionalReportScene();
         } else {
             SceneController sceneController = new SceneController();
@@ -66,6 +68,7 @@ public class GruppoController {
             sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber));
             sceneController.setIdGruppo(this.IdGruppo);
             sceneController.setNomeGruppo(this.NomeGruppo);
+            System.out.println("OnGroupTagCliked id: " + this.IdGruppo);
             sceneController.SwitchToGroupPageScene();
         }
     }

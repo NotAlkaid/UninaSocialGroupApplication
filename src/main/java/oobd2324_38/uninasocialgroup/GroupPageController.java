@@ -36,13 +36,14 @@ public class GroupPageController {
 
     public void initPage() throws IOException, SQLException {
         Gruppo gruppo = new Gruppo();
-        gruppo.setIdGruppo(idGruppo);
+        gruppo.setIdGruppo(this.idGruppo);
+        gruppo.setNome(gruppo.getNomeById(this.idGruppo));
         Utente utente = new Utente();
         utente.setUsername(UtenteLoggato1);
         utente.setIdUtente(utente.getIdByUsername());
         ArrayList<Post> allPosts = gruppo.getAllPosts();
 
-        NomeGruppoLabel.setText(gruppo.getNomeById(gruppo.getIdGruppo()));
+        NomeGruppoLabel.setText(gruppo.getNome());
         TemiLabel.setText(gruppo.GetTemi());
 
         UtenteLoggato.setText(UtenteLoggato1);
@@ -122,6 +123,7 @@ public class GroupPageController {
         SceneController sceneController = new SceneController();
         sceneController.setUtenteLoggato(this.UtenteLoggato1);
         sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber1));
+        sceneController.setIdGruppo(this.idGruppo);
         sceneController.SwitchToCreaPost();
     }
 

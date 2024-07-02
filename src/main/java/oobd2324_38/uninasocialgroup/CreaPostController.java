@@ -116,8 +116,7 @@ public class CreaPostController {
         SceneController sceneController = new SceneController();
         sceneController.setUtenteLoggato(this.UtenteLoggato);
         sceneController.setNotificationsNumber(String.valueOf(this.NotificationsNumber));
-        sceneController.setIdGruppo(this.idGruppo);
-        sceneController.SwitchToGroupPageScene();
+        sceneController.SwitchToHomeScene();
     }
 
     public void OnGoBackButtonClicked() throws IOException, SQLException {

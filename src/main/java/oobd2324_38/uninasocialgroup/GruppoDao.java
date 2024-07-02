@@ -28,7 +28,7 @@ public class GruppoDao {
     public String getTemi(Gruppo gruppo) {
         String sql = "select * from \"SOCIALGROUP_SCHEMA\".get_group_categories(?)";
         StringBuilder result = new StringBuilder();
-
+        System.out.println("ID: " + gruppo.getIdGruppo());
         try{
             PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(sql);
             ps.setInt(1, gruppo.getIdGruppo());
