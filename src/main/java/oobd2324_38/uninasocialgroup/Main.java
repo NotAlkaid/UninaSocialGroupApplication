@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -21,7 +22,11 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
+
+        Image image = new Image("https://us.123rf.com/450wm/tpgraphic/tpgraphic1706/tpgraphic170600135/80557929-icona-uomo-in-cerchio-blu-su-sfondo-blu-logo-simboli-attivit%C3%A0-commerciale-incontro-capo.jpg");
         Main.stage = stage;
+        Main.stage.getIcons().add(image);
+
 
     }
 

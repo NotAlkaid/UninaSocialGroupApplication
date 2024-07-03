@@ -148,7 +148,7 @@ public class SceneController {
         stage.setResizable(false);
         RichiesteAccessoController controller = loader.getController();
         controller.setUtenteLoggato1(UtenteLoggato);
-        controller.setNotificationsNumber1(Integer.parseInt(NotificationsNumber));
+        controller.setNotificationsNumber1(NotificationsNumber);
         controller.InitPage();
     }
 
@@ -282,7 +282,7 @@ public class SceneController {
         stage.setResizable(false);
         RichiesteAccessoController controller = loader.getController();
         controller.setUtenteLoggato1(UtenteLoggato);
-        controller.setNotificationsNumber1(Integer.parseInt(NotificationsNumber));
+        controller.setNotificationsNumber1(NotificationsNumber);
         controller.InitPage();
     }
 

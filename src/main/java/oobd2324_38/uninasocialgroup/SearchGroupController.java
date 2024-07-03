@@ -58,7 +58,6 @@ public class SearchGroupController {
                     GroupTagSearchController controller = loader.getController();
                     controller.setUtenteLoggato(UtenteLoggato1);
                     controller.setIdGruppo(gruppi.get(i).getIdGruppo());
-                    controller.setNotificationsNumber(Integer.parseInt(NotificationsNumber1));
                     controller.InitializeTag(gruppi.get(i), utente);
                     if (cols == 3) {
                         cols = 0;

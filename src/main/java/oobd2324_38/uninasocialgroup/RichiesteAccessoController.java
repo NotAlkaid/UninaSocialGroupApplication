@@ -26,7 +26,7 @@ public class RichiesteAccessoController {
     @FXML private ScrollPane NotificationsPane;
     @FXML private GridPane NotificationsGrid;
     private String UtenteLoggato1;
-    private int NotificationsNumber1;
+    private String NotificationsNumber1;
     private Stage stage;
     private Parent root;
     private Scene scene;
@@ -58,7 +58,7 @@ public class RichiesteAccessoController {
                     messaggio.append("\"");
                     controller.setRichiesta(Richieste.get(i));
                     controller.setUtenteLoggato(UtenteLoggato1);
-                    controller.setNotificationsNumber(Integer.toString(NotificationsNumber1));
+                    controller.setNotificationsNumber(NotificationsNumber1);
                     controller.InitializeTag(messaggio);
                     GridRequests.add(richiesteGrid, 0, rows);
                     GridPane.setMargin(richiesteGrid, new Insets(10, 10, 10, 10));
@@ -78,11 +78,11 @@ public class RichiesteAccessoController {
         UtenteLoggato1 = utenteLoggato1;
     }
 
-    public int getNotificationsNumber1() {
+    public String getNotificationsNumber1() {
         return NotificationsNumber1;
     }
 
-    public void setNotificationsNumber1(int notificationsNumber1) {
+    public void setNotificationsNumber1(String notificationsNumber1) {
         NotificationsNumber1 = notificationsNumber1;
     }
 
