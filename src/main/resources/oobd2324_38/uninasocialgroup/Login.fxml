@@ -18,8 +18,8 @@
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="350.0" styleClass="PageColor" stylesheets="@Style.css">
          <children>
             <Label fx:id="AleMailLabel" layoutX="28.0" layoutY="296.0" text="e: ale.dellavecchia@studenti.unina.it" />
-            <Label fx:id="LeoMailLabel" layoutX="28.0" layoutY="314.0" text="e: mail leo" />
-            <Label fx:id="MarcoMailLabel" layoutX="28.0" layoutY="332.0" text="e: mail marco.danna3@studenti.unina.it" />
+            <Label fx:id="LeoMailLabel" layoutX="28.0" layoutY="314.0" text="e: le.avolio@studenti.unina.it" />
+            <Label fx:id="MarcoMailLabel" layoutX="28.0" layoutY="332.0" text="e: marco.danna3@studenti.unina.it" />
             <FontAwesomeIcon fill="WHITE" glyphName="GROUP" layoutX="99.0" layoutY="157.0" size="12em" wrappingWidth="150.39999999999986" />
             <Label layoutX="68.0" layoutY="196.0" text="UninaSoci@lGroup" textFill="WHITE">
                <font>
